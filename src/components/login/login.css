@@ -1,0 +1,14 @@
+.flex-center {
+    display: flex;
+    align-items: center;
+    vertical-align: middle;
+    justify-content: space-around;
+    min-height: 100vh;
+}
+
+.logotxt {
+    font-size: xx-large;
+    font-weight: 600;
+    color: darkslategrey;
+    text-align: center;
+}
