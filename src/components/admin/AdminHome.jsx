@@ -3,6 +3,7 @@ import Navbar from "../Navbar";
 import AdminSideNav from "./AdminSideNav";
 import Dashboard from "./Dashboard";
 import "./adminhome.css";
+import UserManagement from "./users/UserManagement";
 
 class AdminHome extends Component {
   constructor(props) {
@@ -10,6 +11,7 @@ class AdminHome extends Component {
     this.toggleSidenav = this.toggleSidenav.bind(this);
     this.state = {
       navshow: "d-flex",
+      currentPage: "dashboard",
     };
   }
 
@@ -27,13 +29,32 @@ class AdminHome extends Component {
     }
   }
 
+  pageSelect = (page) => {
+    console.log(page);
+    this.setState({
+      currentPage: page,
+    });
+  };
+
   render() {
+    let dashcomponent;
+    if (this.state.currentPage === "dashboard") {
+      dashcomponent = (
+        <Dashboard
+          toggleSidenav={this.toggleSidenav}
+          pageSelect={this.pageSelect}
+        />
+      );
+    } else if (this.state.currentPage === "users") {
+      dashcomponent = <UserManagement />;
+    }
+
     return (
       <div className={this.state.navshow} id="wrapper">
-        <AdminSideNav />
+        <AdminSideNav pageSelect={this.pageSelect} />
         <div id="page-content-wrapper">
           <Navbar />
-          <Dashboard toggleSidenav={this.toggleSidenav} />
+          {dashcomponent}
         </div>
       </div>
     );

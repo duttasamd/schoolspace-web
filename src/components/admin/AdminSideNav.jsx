@@ -4,49 +4,63 @@ import "./adminsidenav.css";
 class AdminSideNav extends Component {
   render() {
     return (
-      <div
-        className="bg-light border-right"
-        id="sidebar-wrapper"
-        classNameName=""
-      >
+      <div className="bg-light border-right" id="sidebar-wrapper">
         <div className="sidebar-heading"></div>
         <div className="list-group list-group-flush">
-          <a
-            href="#"
+          <button
             className="list-group-item list-group-item-action bg-light"
+            onClick={() => this.props.pageSelect("dashboard")}
           >
             Dashboard
-          </a>
-          <a
-            href="#"
+          </button>
+          <button
             className="list-group-item list-group-item-action bg-light"
+            onClick={() => this.props.pageSelect("users")}
           >
-            Shortcuts
-          </a>
-          <a
-            href="#"
+            Users
+          </button>
+          <button
             className="list-group-item list-group-item-action bg-light"
+            onClick={() => this.props.pageSelect("students")}
           >
-            Overview
-          </a>
-          <a
-            href="#"
+            Students
+          </button>
+          <button
             className="list-group-item list-group-item-action bg-light"
+            onClick={() => this.props.pageSelect("teachers")}
           >
-            Events
-          </a>
-          <a
-            href="#"
+            Teachers
+          </button>
+          <button
             className="list-group-item list-group-item-action bg-light"
+            onClick={() => this.props.pageSelect("staff")}
           >
-            Profile
-          </a>
-          <a
-            href="#"
+            Staff
+          </button>
+          <button
             className="list-group-item list-group-item-action bg-light"
+            onClick={() => this.props.pageSelect("standards")}
           >
-            Status
-          </a>
+            Standards
+          </button>
+          <button
+            className="list-group-item list-group-item-action bg-light"
+            onClick={() => this.props.pageSelect("sections")}
+          >
+            Sections
+          </button>
+          <button
+            className="list-group-item list-group-item-action bg-light"
+            onClick={() => this.props.pageSelect("examinations")}
+          >
+            Examinations
+          </button>
+          <button
+            className="list-group-item list-group-item-action bg-light"
+            onClick={() => this.props.pageSelect("reports")}
+          >
+            Reports
+          </button>
         </div>
       </div>
     );

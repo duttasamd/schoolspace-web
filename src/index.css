@@ -24,6 +24,18 @@ code {
   max-width: 90%;
 }
 
+.grey {
+  color: grey;
+}
+
+.darkslategrey {
+  color: darkslategrey;
+}
+
+.f-800 {
+  font-weight: 800;
+}
+
 /* breakpoint rules */
 
 /* lg */

@@ -1,3 +1,23 @@
 #btnSideNavToggle {
   left: 0;
 }
+
+.border-left-blue {
+  border-left: solid !important;
+  border-left-color: blue !important;
+}
+
+.border-left-red {
+  border-left: solid !important;
+  border-left-color: red !important;
+}
+
+.border-left-orange {
+  border-left: solid !important;
+  border-left-color: orange !important;
+}
+
+.border-left-grey {
+  border-left: solid !important;
+  border-left-color: grey !important;
+}
