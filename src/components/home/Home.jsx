@@ -1,16 +1,14 @@
-import React, { Component } from 'react';
-import Navbar from '../Navbar';
+import React, { Component } from "react";
+import AdminHome from "../admin/AdminHome";
 
 class Home extends Component {
-    
-    render() {
-        return (
-            <div>
-                <Navbar/>
-                <h1>Home</h1>
-            </div>
-        );
-    }
+  render() {
+    return (
+      <div>
+        <AdminHome />
+      </div>
+    );
+  }
 }
 
 export default Home;

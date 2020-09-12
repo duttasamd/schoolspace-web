@@ -21,7 +21,7 @@ export default function Login(props) {
 
 
     return (
-        <div className="flex-center container">
+        <div className="flex-center container fullscreen">
             <div className="w-md-40 px-xs-5 px-3">
                 <label className="logotxt w-100 mb-3">School Space</label>
                 <form onSubmit={handleSubmit}>

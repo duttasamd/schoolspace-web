@@ -1,14 +1,13 @@
 body {
   margin: 0;
-  font-family: 'Nunito', 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: "Nunito", "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell",
+    "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
 
@@ -17,14 +16,13 @@ code {
   width: 40%;
 }
 
+.f-1_8em {
+  font-size: 1.8em;
+}
 
-
-
-
-
-
-
-
+.maxw-90 {
+  max-width: 90%;
+}
 
 /* breakpoint rules */
 
@@ -34,4 +32,3 @@ code {
     width: 100%;
   }
 }
-
