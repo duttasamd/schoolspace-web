@@ -16,6 +16,21 @@ code {
   width: 40%;
 }
 
+.spinner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.flexcenter {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  vertical-align: middle;
+}
+
 .f-1_8em {
   font-size: 1.8em;
 }

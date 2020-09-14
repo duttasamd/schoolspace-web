@@ -57,7 +57,7 @@ class Dashboard extends Component {
             >
               <DashCard
                 title="Total Users"
-                stats="4357"
+                relendpoint="/users/count"
                 icon={faUsers}
                 dashcardclass={dashcardclass + " border-left-grey"}
               />
@@ -65,7 +65,7 @@ class Dashboard extends Component {
             <div className="col-sm">
               <DashCard
                 title="Students"
-                stats="4121"
+                relendpoint="/students/count"
                 icon={faUserGraduate}
                 dashcardclass={dashcardclass + " border-left-blue"}
               />
@@ -73,7 +73,7 @@ class Dashboard extends Component {
             <div className="col-sm">
               <DashCard
                 title="Teachers"
-                stats="181"
+                relendpoint="/teachers/count"
                 icon={faChalkboardTeacher}
                 dashcardclass={dashcardclass + " border-left-red"}
               />
@@ -81,7 +81,7 @@ class Dashboard extends Component {
             <div className="col-sm">
               <DashCard
                 title="Others"
-                stats="55"
+                relendpoint="-"
                 icon={faUserCircle}
                 dashcardclass={dashcardclass + " border-left-orange"}
               />
@@ -96,7 +96,7 @@ class Dashboard extends Component {
                 <div className="col">
                   <DashCard
                     title="Standards"
-                    stats="10"
+                    relendpoint="/standards/count"
                     icon={faThList}
                     dashcardclass={dashcardclass}
                   />
@@ -106,7 +106,7 @@ class Dashboard extends Component {
                 <div className="col">
                   <DashCard
                     title="Sections"
-                    stats="40"
+                    relendpoint="/sections/count"
                     icon={faHashtag}
                     dashcardclass={dashcardclass}
                   />

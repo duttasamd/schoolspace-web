@@ -1,36 +1,38 @@
 import CookieService from "./CookieService";
 import AuthenticationService from "./AuthenticationService";
 
-class UserService {
-  get(callback) {
+class FetchService {
+  fetch(relendpoint, method, accept, callback) {
     if (AuthenticationService.isAuthenticated()) {
       const requestOptions = {
-        method: "GET",
+        method: method,
         headers: {
-          Accept: "application/json",
+          Accept: accept,
           Authorization: "Bearer " + CookieService.get("access_token"),
         },
       };
 
-      fetch(process.env.REACT_APP_SCHOOLSPACE_API_URL + "/user", requestOptions)
+      fetch(
+        process.env.REACT_APP_SCHOOLSPACE_API_URL + relendpoint,
+        requestOptions
+      )
         .then(async (response) => {
           const data = await response.json();
           if (!response.ok) {
             const error = (data && data.message) || response.status;
             return Promise.reject(error);
           }
-          console.log("User loaded.");
+          console.log("Sending API Request..");
           callback(data);
         })
         .catch((error) => {
           console.error("There was an error!", error);
         });
     } else {
-      return null;
+      console.log("Not authenticated!");
+      return "Not Authorized";
     }
   }
-
-  set(user) {}
 }
 
-export default new UserService();
+export default new FetchService();
