@@ -62,7 +62,10 @@ class Dashboard extends Component {
                 dashcardclass={dashcardclass + " border-left-grey"}
               />
             </div>
-            <div className="col-sm">
+            <div
+              className="col-sm"
+              onClick={() => this.props.pageSelect("students")}
+            >
               <DashCard
                 title="Students"
                 relendpoint="/students/count"

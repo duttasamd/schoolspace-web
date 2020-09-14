@@ -48,16 +48,16 @@ export default function UserTable() {
         accessor: "lastname",
       },
       {
-        Header: "Email",
-        accessor: "email",
+        Header: "Standard",
+        accessor: "standard",
       },
       {
-        Header: "Phone",
-        accessor: "phone",
+        Header: "Section",
+        accessor: "section",
       },
       {
-        Header: "Admin",
-        accessor: "isAdmin",
+        Header: "Roll",
+        accessor: "roll",
       },
     ],
     []
@@ -89,7 +89,7 @@ export default function UserTable() {
         console.log("fetching users..");
         fetch(
           process.env.REACT_APP_SCHOOLSPACE_API_URL +
-            "/users?" +
+            "/students?" +
             new URLSearchParams({
               pageIndex: pageIndex,
               pageSize: pageSize,

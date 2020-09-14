@@ -4,6 +4,8 @@ import AdminSideNav from "./AdminSideNav";
 import Dashboard from "./Dashboard";
 import "./adminhome.css";
 import UserManagement from "./users/UserManagement";
+import StudentManagement from "./students/StudentManagement";
+import TeacherManagement from "./teachers/TeacherManagement";
 
 class AdminHome extends Component {
   constructor(props) {
@@ -47,6 +49,10 @@ class AdminHome extends Component {
       );
     } else if (this.state.currentPage === "users") {
       dashcomponent = <UserManagement />;
+    } else if (this.state.currentPage === "students") {
+      dashcomponent = <StudentManagement />;
+    } else if (this.state.currentPage === "teachers") {
+      dashcomponent = <TeacherManagement />;
     }
 
     return (
