@@ -56,8 +56,8 @@ export default function UserTable() {
         accessor: "phone",
       },
       {
-        Header: "Admin",
-        accessor: "isAdmin",
+        Header: "Role",
+        accessor: "role",
       },
     ],
     []
