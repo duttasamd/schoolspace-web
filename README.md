@@ -27,3 +27,23 @@ In the project root:
 ##### That's it. You are all set.
 
 Run `npm start` to serve the API project. Default endpoint: `http://localhost:3000`
+
+
+### FOR DEVELOPERS
+
+#### Conventions
+
+1. Component/Renderable Function Names : `PascalCase [.jsx]`
+2. Local Functions/ Instance Functions : `camelCase`
+3. css/js files : `flatcase` [Exception : `App.css`, `Services/*.js`]
+4. Constants : `CONSTANT_CASE`
+
+
+Folders for each user type.  
+Main screen files directly inside.  
+Subfolders for Major Sub-Screens Types for the user type.
+
+5. HTML/JS/CSS naming :
+  * ids : `camelCase` [Start with the type of component. | TextBox id that accepts first name = `txtFirstName`]
+  * classes : `flatcase` or `snake_case` [try to use classes that describe the css effects. Not the type of element. | centers element in flexbox = `flexcenter`]
+  * vars : `camelCase` or `flatcase`. Explicit naming.
