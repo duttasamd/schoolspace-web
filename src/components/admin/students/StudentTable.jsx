@@ -36,7 +36,7 @@ const Styles = styled.div`
   }
 `;
 
-export default function UserTable() {
+export default function StudentTable() {
   const columns = React.useMemo(
     () => [
       {
