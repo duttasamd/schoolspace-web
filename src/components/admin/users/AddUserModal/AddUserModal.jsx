@@ -10,8 +10,7 @@ const  AddUserModal = () => {
 
     const [roles, setRoles] = useState([]);
     const [standards, setStandards] =  useState([]);
-    const [sections, setSections] =  useState([]);
-    const [roll, setRoll] = useState()
+    
 
     const getRoles = () => {
         FetchService.fetch(
@@ -32,75 +31,28 @@ const  AddUserModal = () => {
                     setStandards(data);
                     console.log(data);
                 }
-            );
-            
-        }
-        
+            ); 
+        }  
     }; 
-
-    const getSections = (standard_id) => {
-        FetchService.fetch(
-            `/sections?standard_id=${standard_id}`, "GET", "application/json",
-            (data) => {
-                setSections(data);
-                console.log(data);
-            }
-        );
-    }; 
-
-    const getRoll = (section_id) => {
-        FetchService.fetch(
-            `/students/nextroll?section=${section_id}`, "GET", "application/json",
-            (data) => {
-                setRoll(data);
-                console.log(data);
-            }
-        );
-    }; 
-    
-    // useEffect(() => {
-    //     getRoles();
-    //     getStandards();
-    //     getSections();
-    // }, [standardID]);
-
     
     
     // submit
-    const initialFormData = {
-        firstname: "",
-        lastname: "",
-        email: "",
-        phone: "",
-        user_role: "",
-        standard_id: "",
-        student_section: "",
-        roll: ""
-    }
-
-    const [formData, setFormData] = useState(initialFormData);
+    const [formData, setFormData] = useState({});
+    let resetData = {};
 
     const handleReset = (e) => {
-        setFormData({
-            ...initialFormData,
-        [e.target.name]: e.target.value
-        })
-    }
-
+        e.persist();
+        setFormData({ ...resetData, [e.target.name]: e.target.value });
+    };
 
     const handleChange = (e) => {
-        setFormData({
-            ...formData,
-
-        [e.target.name]: e.target.value.trim()
-        });
+        e.persist();
+        setFormData(formData => ({ ...formData, [e.target.name]: e.target.value.trim() }));
     };
 
     const handleSubmit = (e) => {
         e.preventDefault()
         e.persist()
-        // e.target.reset()
-        // console.log(e.target)
         console.log(JSON.stringify(formData));
         // submit to api
         axios
@@ -130,26 +82,22 @@ const  AddUserModal = () => {
     if(formData.user_role == 2){
         studentModal = 
             <StudentModal 
-                sectionsGet={e => getSections(e.target.value)}
-                rollGet={e => getRoll(e.target.value)}
                 changeHandle={handleChange}
                 standards={standards}
-                sections={sections}
-                roll={roll}
             />
     }
 
     return (
         <div>
             <button type="button" className="btn btn-primary" data-toggle="modal" data-target="#addUserModal" onClick={getRoles}>
-            Add New User
+            Add User
             </button>
 
             <div className="modal fade" id="addUserModal" tabIndex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div className="modal-dialog modal-dialog-centered modal-lg" role="document">
                     <div className="modal-content">
                         <div className="modal-header">
-                            <h5 className="modal-title" id="exampleModalLabel">Add New User</h5>
+                            <h5 className="modal-title" id="exampleModalLabel">Add User</h5>
                             <button type="button" className="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>

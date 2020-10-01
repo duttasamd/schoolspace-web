@@ -6,9 +6,8 @@ class UserManagement extends Component {
   render() {
     return (
       <div>
-        <button className="btn btn-primary">Add User</button>
-        <UserTable />
         <AddUserModal />
+        <UserTable />
       </div>
     );
   }
