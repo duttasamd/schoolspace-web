@@ -1,61 +1,65 @@
 body {
-  margin: 0;
-  font-family: "Nunito", "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell",
-    "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+	margin: 0;
+	font-family: "Nunito", "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell",
+		"Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
+	font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+		monospace;
 }
 
 /* universal rules */
 .w-md-40 {
-  width: 40%;
+	width: 40%;
 }
 
 .spinner {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
 }
 
 .flexcenter {
-  height: 100%;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  vertical-align: middle;
+	height: 100%;
+	width: 100%;
+	display: flex;
+	align-items: center;
+	vertical-align: middle;
 }
 
 .f-1_8em {
-  font-size: 1.8em;
+	font-size: 1.8em;
 }
 
 .maxw-90 {
-  max-width: 90%;
+	max-width: 90%;
+}
+
+.mt-10 {
+	margin-top: 10%;
 }
 
 .grey {
-  color: grey;
+	color: grey;
 }
 
 .darkslategrey {
-  color: darkslategrey;
+	color: darkslategrey;
 }
 
 .f-800 {
-  font-weight: 800;
+	font-weight: 800;
 }
 
 /* breakpoint rules */
 
 /* lg */
 @media (max-width: 768px) {
-  .w-md-40 {
-    width: 100%;
-  }
+	.w-md-40 {
+		width: 100%;
+	}
 }

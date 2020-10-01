@@ -1,0 +1,41 @@
+.cover {
+	width: 100%;
+	position: absolute;
+	z-index: -1;
+	top: 0;
+}
+
+.profilecontent {
+	height: 200vh;
+}
+
+.user {
+	background: white;
+	width: 15vw;
+	height: 15vw;
+	border-width: 20px;
+	border-color: black;
+	padding: 0.3em;
+	/* -moz-border-radius: 2em;
+	-webkit-border-radius: 2em; */
+	border-radius: 50%;
+}
+
+.user::after {
+	width: 20vw;
+	height: 20vw;
+	border: 1px solid #000000;
+	border-radius: 50%;
+	display: block;
+}
+
+.uname {
+	font-size: 2em;
+	font-weight: 700;
+	/* margin-top: 10vw; */
+	color: white;
+}
+
+.mt-14vw {
+	margin-top: 14vw;
+}
