@@ -8,7 +8,7 @@ import Profile from "./components/profile/Profile";
 
 function App() {
 	return (
-		<Router>
+		<Router basename={process.env.PUBLIC_URL}>
 			<Switch>
 				<Route exact path='/login' component={Login} />
 				<ProtectedRoute exact path='/' component={Home} />
