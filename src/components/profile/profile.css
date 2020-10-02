@@ -39,3 +39,66 @@
 .mt-14vw {
 	margin-top: 14vw;
 }
+
+@media (max-width: 768px) {
+	.mt-14vw {
+		margin-top: 20vw;
+	}
+
+	.uname {
+		font-size: 1.8em;
+		font-weight: 600;
+		/* margin-top: 10vw; */
+		color: white;
+	}
+
+	.cover {
+		position: absolute;
+		z-index: -1;
+		top: 7vw;
+	}
+}
+
+@media (max-width: 640px) {
+	.mt-14vw {
+		margin-top: 22vw;
+	}
+
+	.uname {
+		font-size: 1.5em;
+		font-weight: 600;
+		/* margin-top: 10vw; */
+		color: white;
+	}
+
+	.cover {
+		position: absolute;
+		z-index: -1;
+		top: 9vw;
+	}
+}
+
+.overlay {
+	color: black;
+	background-color: black;
+	fill: black;
+}
+
+@media (max-width: 550px) {
+	.mt-14vw {
+		margin-top: 23vw;
+	}
+
+	.uname {
+		font-size: 1.2em;
+		font-weight: 600;
+		/* margin-top: 10vw; */
+		color: white;
+	}
+
+	.cover {
+		position: absolute;
+		z-index: -1;
+		top: 10vw;
+	}
+}

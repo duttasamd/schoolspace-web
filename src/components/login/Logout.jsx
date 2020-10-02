@@ -1,16 +1,18 @@
-import React from 'react';
+import React from "react";
+import { useHistory } from "react-router-dom";
 
-import auth from '../../services/AuthenticationService';
+import auth from "../../services/AuthenticationService";
 
 export default function Logout(props) {
-    function handleClick(e) {    
-        auth.logout(() => {
-            props.history.push("/");
-        });
-    }
-    return (
-        <a className="dropdown-item" href="/" onClick={handleClick}>
-            Logout
-        </a>
-    );
+	const history = useHistory();
+	function handleClick(e) {
+		auth.logout(() => {
+			history.push("/login");
+		});
+	}
+	return (
+		<a className='dropdown-item' onClick={handleClick}>
+			Logout
+		</a>
+	);
 }

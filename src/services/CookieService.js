@@ -1,19 +1,20 @@
-import Cookie from 'universal-cookie'
+import Cookie from "universal-cookie";
 
 const cookie = new Cookie();
 
 class CookieService {
-    get(key) {
-        return cookie.get(key);
-    }
+	get(key) {
+		return cookie.get(key);
+	}
 
-    set(key, value, options) {
-        return cookie.set(key, value, options);
-    }
+	set(key, value, options) {
+		return cookie.set(key, value, options);
+	}
 
-    remove(key) {
-        cookie.remove(key);
-    }
+	remove(key) {
+		console.log("Removing cookie...");
+		cookie.remove(key, { path: "/", domain: "localhost" });
+	}
 }
 
 export default new CookieService();
