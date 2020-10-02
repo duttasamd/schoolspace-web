@@ -78,6 +78,12 @@
 	}
 }
 
+.overlay {
+	color: black;
+	background-color: black;
+	fill: black;
+}
+
 @media (max-width: 550px) {
 	.mt-14vw {
 		margin-top: 23vw;

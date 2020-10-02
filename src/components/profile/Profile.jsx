@@ -47,7 +47,17 @@ export default function Profile() {
 						className='user'
 						src={"/img/profile/defaultuser.png"}
 						alt=''
+						usemap='#examplemap'
 					/>
+					<map name='examplemap'>
+						<area
+							className='rect'
+							coords='0,10,40,40'
+							shape='poly'
+							href='/'
+							alt='Page1'
+						/>
+					</map>
 					<label className='uname mx-3'>
 						{user.firstname} {user.lastname}
 					</label>
