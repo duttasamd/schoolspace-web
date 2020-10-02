@@ -11,9 +11,16 @@ export default function Profile() {
 
 	useEffect(() => {
 		let endpoint = "/user/" + id;
-		FetchService.fetch(endpoint, "GET", "application/json", (user) => {
-			setUser(user);
-		});
+		FetchService.fetch(
+			endpoint,
+			"GET",
+			"application/json",
+			false,
+			null,
+			(user) => {
+				setUser(user);
+			}
+		);
 	}, []);
 
 	return (
