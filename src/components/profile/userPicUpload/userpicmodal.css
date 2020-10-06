@@ -1,0 +1,17 @@
+.img-container {
+    width: 400px;
+    height: 400px;
+    float: left;
+}
+
+.img-preview {
+    min-width: 300px;
+    min-height: 300px;
+    float: right;
+    margin-left: 10px;
+    border-radius: 50%;
+}
+
+.rounded-circle {
+    border-radius: 50%;
+}
