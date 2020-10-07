@@ -46,13 +46,7 @@ export default function Profile() {
 
 			<div className='container mt-14vw'>
 				<div className=''>
-					<img
-						className='user'
-						src={"/img/profile/defaultuser.png"}
-						alt=''
-						data-toggle="modal"
-						data-target="#userProfilePicModal"
-					/>
+					
 					
 					{/* Modal */}
 					<UserPicModal />

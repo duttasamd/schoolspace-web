@@ -13,7 +13,7 @@ function UserPicModal() {
 
     const [image, setImage] = useState(null)
     const [crop, setCrop] = useState({ aspect: 1 })
-    const [croppedImage, setCroppedImage] = useState(null)
+    const [croppedImage, setCroppedImage] = useState("/img/profile/defaultuser.png")
 
     function getCroppedImg() {
         const canvas = document.createElement('canvas');
@@ -42,34 +42,39 @@ function UserPicModal() {
 
     return (
          
-        <div className="modal fade" id="userProfilePicModal" tabIndex="-1" role="dialog" aria-labelledby="userProfilePicModalLabel" aria-hidden="true">
-            <div className="modal-dialog modal-dialog-centered modal-lg" role="document">
-                <div className="modal-content">
-                    <div className="modal-header">
-                        <h5 className="modal-title" id="userProfilePicModalLabel">Modal title</h5>
-                        <button type="button" className="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    
-                    <div className="modal-body">
-                        <div>
-                            <div className='col-md-6 pb-2' >
-                                <input id='picture' type='file' name='picture' accept='image/*'
-                                required onInput={handleChange} />
-                            </div>
-                            <div className='row' >
-                                <div className='col-md-6'>
-                                    <ReactCrop src={src} crop={crop} onImageLoaded={setImage} onChange={setCrop} circularCrop />
-                                </div>
-                                {croppedImage && <div className='col-md-6 '>
-                                    <img src={croppedImage} alt='Cropped Image' className='img-preview'/>
-                                </div>}
-                            </div>
-                            <button className="btn btn-danger" onClick={getCroppedImg}>Crop Image</button>
+        <div>
+            <img
+                className='user'
+                src={croppedImage}
+                alt=''
+                data-toggle="modal"
+                data-target="#userProfilePicModal"
+			/>
+
+            <div className="modal fade" id="userProfilePicModal" tabIndex="-1" role="dialog" aria-labelledby="userProfilePicModalLabel" aria-hidden="true">
+                <div className="modal-dialog modal-dialog-centered modal-lg" role="document">
+                    <div className="modal-content">
+                        <div className="modal-header">
+                            <h5 className="modal-title" id="userProfilePicModalLabel">Modal title</h5>
+                            <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                            </button>
                         </div>
+                        
+                        <div className="modal-body">
+                            <div>
+                                <div className='col-md-6 pb-2' >
+                                    <input id='picture' type='file' name='picture' accept='image/*'
+                                    required onInput={handleChange} />
+                                </div>
+                                <div className='text-center'>
+                                        <ReactCrop src={src} crop={crop} onImageLoaded={setImage} onChange={setCrop} circularCrop />
+                                </div>
+                                <button className="btn btn-danger" onClick={getCroppedImg} data-dismiss="modal">Crop Image</button>
+                            </div>
+                        </div>
+                    
                     </div>
-                
                 </div>
             </div>
         </div>
