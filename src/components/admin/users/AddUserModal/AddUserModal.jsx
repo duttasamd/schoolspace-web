@@ -3,6 +3,7 @@ import axios from "axios";
 import FetchService from "../../../../services/FetchService";
 import CookieService from "../../../../services/CookieService";
 import StudentModal from "./StudentModal";
+import FormSubmit from "../../../tools/FormSubmit"
 
 const AddUserModal = () => {
 	const [roles, setRoles] = useState([]);
@@ -39,21 +40,8 @@ const AddUserModal = () => {
 	};
 
 	// submit
-	const [formData, setFormData] = useState({});
-	let resetData = {};
 
-	const handleReset = (e) => {
-		e.persist();
-		setFormData({ ...resetData, [e.target.name]: e.target.value });
-	};
-
-	const handleChange = (e) => {
-		e.persist();
-		setFormData((formData) => ({
-			...formData,
-			[e.target.name]: e.target.value.trim(),
-		}));
-	};
+	const [formData, handleChange, handleReset] = FormSubmit()
 
 	const handleSubmit = (e) => {
 		e.preventDefault();

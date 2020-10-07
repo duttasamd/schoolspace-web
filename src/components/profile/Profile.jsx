@@ -5,6 +5,9 @@ import FetchService from "../../services/FetchService";
 import Navbar from "../Navbar";
 import InfoBox from "./InfoBox";
 import "./profile.css";
+import "./userPicUpload/UserPicModal";
+import UserPicModal from "./userPicUpload/UserPicModal";
+
 
 export default function Profile() {
 	let { id } = useParams();
@@ -47,17 +50,14 @@ export default function Profile() {
 						className='user'
 						src={"/img/profile/defaultuser.png"}
 						alt=''
-						usemap='#examplemap'
+						data-toggle="modal"
+						data-target="#userProfilePicModal"
 					/>
-					<map name='examplemap'>
-						<area
-							className='rect'
-							coords='0,10,40,40'
-							shape='poly'
-							href='/'
-							alt='Page1'
-						/>
-					</map>
+					
+					{/* Modal */}
+					<UserPicModal />
+					
+					
 					<label className='uname mx-3'>
 						{user.firstname} {user.lastname}
 					</label>
