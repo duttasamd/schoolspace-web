@@ -2,18 +2,25 @@ import React, { useState } from 'react'
 import './userpicmodal.css'
 import ReactCrop from 'react-image-crop'
 import 'react-image-crop/dist/ReactCrop.css'
+import axios from "axios";
+import FetchService from "../../../services/FetchService";
+import CookieService from "../../../services/CookieService";
 
 function UserPicModal() {
 
     const [src, setSrc] = useState("/img/profile/defaultuser.png");
+    const [postImage, setPostImage] = useState("/img/profile/defaultuser.png")
 
     const handleChange = e => {
-        setSrc(URL.createObjectURL(e.target.files[0])) 
+        setSrc(URL.createObjectURL(e.target.files[0]))
+        // setPostImage(e.target.files[0]) 
     }
 
     const [image, setImage] = useState(null)
     const [crop, setCrop] = useState({ aspect: 1 })
     const [croppedImage, setCroppedImage] = useState("/img/profile/defaultuser.png")
+    
+
 
     function getCroppedImg() {
         const canvas = document.createElement('canvas');
@@ -37,7 +44,40 @@ function UserPicModal() {
 
         const base64Image = canvas.toDataURL('image/jpeg')
         setCroppedImage(base64Image)
+
+        canvas.toBlob(blob => {
+            setPostImage(blob)
+        })
+        
     }
+
+
+    // submit
+
+    const handleSubmit = (e) => {
+        let form_data = new FormData()
+        form_data.append('display_picture_path', postImage)
+		e.preventDefault();
+		e.persist();
+		console.log('Hello ' + postImage);
+		// submit to api
+		axios
+			.post("http://localhost:8000/api/v1/profiles/image", form_data, {
+				headers: {
+					"Access-Control-Allow-Origin": "*",
+					Authorization:
+                        "Bearer " + CookieService.get("access_token"),
+                    'content-type': 'multipart/form-data',
+				},
+			})
+			.then((response) => {
+				console.log(response);
+				console.log(response.data);
+			})
+			.catch((error) => {
+				console.log(error);
+			});
+	};
 
 
     return (
@@ -61,8 +101,8 @@ function UserPicModal() {
                             </button>
                         </div>
                         
-                        <div className="modal-body">
-                            <div>
+                        
+                            <div className="modal-body">
                                 <div className='col-md-6 pb-2' >
                                     <input id='picture' type='file' name='picture' accept='image/*'
                                     required onInput={handleChange} />
@@ -70,9 +110,10 @@ function UserPicModal() {
                                 <div className='text-center'>
                                         <ReactCrop src={src} crop={crop} onImageLoaded={setImage} onChange={setCrop} circularCrop />
                                 </div>
-                                <button className="btn btn-danger" onClick={getCroppedImg} data-dismiss="modal">Crop Image</button>
+                                    <button className="btn btn-danger" onClick={getCroppedImg} >Crop Image</button>
+                                    <button className="btn btn-danger" onClick={handleSubmit} >Submit</button>
                             </div>
-                        </div>
+                        
                     
                     </div>
                 </div>
