@@ -3,9 +3,9 @@ import axios from "axios";
 import FetchService from "../../../../services/FetchService";
 import CookieService from "../../../../services/CookieService";
 import StudentModal from "./StudentModal";
-import FormSubmit from "../../../tools/FormSubmit"
+import FormSubmit from "../../../tools/FormSubmit";
 
-const AddUserModal = () => {
+export default function AddUserModal() {
 	const [roles, setRoles] = useState([]);
 	const [standards, setStandards] = useState([]);
 
@@ -24,7 +24,7 @@ const AddUserModal = () => {
 	};
 
 	const getStandards = (user_role) => {
-		if (user_role == 2) {
+		if (user_role === 2) {
 			FetchService.fetch(
 				"/standards",
 				"GET",
@@ -41,7 +41,7 @@ const AddUserModal = () => {
 
 	// submit
 
-	const [formData, handleChange, handleReset] = FormSubmit()
+	const [formData, handleChange, handleReset] = FormSubmit();
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
@@ -78,7 +78,7 @@ const AddUserModal = () => {
 	// adds student modal
 	let studentModal;
 
-	if (formData.user_role == 2) {
+	if (formData.user_role === 2) {
 		studentModal = (
 			<StudentModal changeHandle={handleChange} standards={standards} />
 		);
@@ -261,6 +261,4 @@ const AddUserModal = () => {
 			</div>
 		</div>
 	);
-};
-
-export default AddUserModal;
+}
