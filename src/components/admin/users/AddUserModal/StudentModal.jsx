@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import FetchService from "../../../../services/FetchService";
 
-function StudentModal(props) {
+export default function StudentModal(props) {
 	const [sections, setSections] = useState([]);
 	const [roll, setRoll] = useState();
 
@@ -51,6 +51,7 @@ function StudentModal(props) {
 						onChange={(e) => getSections(e.target.value)}
 						onInput={props.changeHandle}
 						required
+						className='form-control'
 					>
 						<option value=''> Select Standard </option>
 						{props.standards.map((standard) => (
@@ -79,6 +80,7 @@ function StudentModal(props) {
 						onChange={(e) => getRoll(e.target.value)}
 						onInput={props.changeHandle}
 						required
+						className='form-control'
 					>
 						<option value=''> Select Section </option>
 						{sections.map((section) => (
@@ -107,11 +109,10 @@ function StudentModal(props) {
 						placeholder={roll}
 						onChange={props.changeHandle}
 						required
+						className='form-control'
 					/>
 				</div>
 			</div>
 		</div>
 	);
 }
-
-export default StudentModal;

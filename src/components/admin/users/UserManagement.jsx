@@ -1,16 +1,10 @@
-import React, { Component } from "react";
-import AddUserModal from "./AddUserModal/AddUserModal";
+import React from "react";
 import UserTable from "./UserTable";
 
-class UserManagement extends Component {
-  render() {
-    return (
-      <div>
-        <AddUserModal />
-        <UserTable />
-      </div>
-    );
-  }
+export default function UserManagement() {
+	return (
+		<div>
+			<UserTable />
+		</div>
+	);
 }
-
-export default UserManagement;

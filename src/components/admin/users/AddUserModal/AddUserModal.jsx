@@ -3,9 +3,9 @@ import axios from "axios";
 import FetchService from "../../../../services/FetchService";
 import CookieService from "../../../../services/CookieService";
 import StudentModal from "./StudentModal";
-import FormSubmit from "../../../tools/FormSubmit"
+import FormSubmit from "../../../tools/FormSubmit";
 
-const AddUserModal = () => {
+export default function AddUserModal() {
 	const [roles, setRoles] = useState([]);
 	const [standards, setStandards] = useState([]);
 
@@ -24,7 +24,7 @@ const AddUserModal = () => {
 	};
 
 	const getStandards = (user_role) => {
-		if (user_role == 2) {
+		if (user_role === "2") {
 			FetchService.fetch(
 				"/standards",
 				"GET",
@@ -41,7 +41,7 @@ const AddUserModal = () => {
 
 	// submit
 
-	const [formData, handleChange, handleReset] = FormSubmit()
+	const [formData, handleChange, handleReset] = FormSubmit();
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
@@ -78,7 +78,7 @@ const AddUserModal = () => {
 	// adds student modal
 	let studentModal;
 
-	if (formData.user_role == 2) {
+	if (formData.user_role === "2") {
 		studentModal = (
 			<StudentModal changeHandle={handleChange} standards={standards} />
 		);
@@ -140,6 +140,7 @@ const AddUserModal = () => {
 											name='firstname'
 											required
 											onChange={handleChange}
+											className='form-control'
 										/>
 									</div>
 								</div>
@@ -159,6 +160,7 @@ const AddUserModal = () => {
 											name='lastname'
 											onChange={handleChange}
 											required
+											className='form-control'
 										/>
 									</div>
 								</div>
@@ -178,6 +180,7 @@ const AddUserModal = () => {
 											name='email'
 											onChange={handleChange}
 											required
+											className='form-control'
 										/>
 									</div>
 								</div>
@@ -197,6 +200,7 @@ const AddUserModal = () => {
 											name='phone'
 											onChange={handleChange}
 											required
+											className='form-control'
 										/>
 									</div>
 								</div>
@@ -219,6 +223,7 @@ const AddUserModal = () => {
 											}
 											onInput={handleChange}
 											required
+											className='form-control'
 										>
 											<option value=''>
 												{" "}
@@ -239,19 +244,19 @@ const AddUserModal = () => {
 
 								{studentModal}
 
-								<div className='modal-footer justify-content-center'>
-									<button
-										type='submit'
-										className='btn btn-primary'
-									>
-										Submit
-									</button>
+								<div className='modal-footer justify-content-space-between'>
 									<button
 										type='button'
 										className='btn btn-secondary'
 										data-dismiss='modal'
 									>
 										Close
+									</button>
+									<button
+										type='submit'
+										className='btn btn-primary'
+									>
+										Submit
 									</button>
 								</div>
 							</form>
@@ -261,6 +266,4 @@ const AddUserModal = () => {
 			</div>
 		</div>
 	);
-};
-
-export default AddUserModal;
+}

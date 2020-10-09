@@ -28,9 +28,7 @@ class UserService {
 				})
 				.catch((error) => {
 					console.error("ERROR : ", error);
-					if (error.includes("Unauthenticated")) {
-						AuthenticationService.logout();
-					}
+					AuthenticationService.logout();
 				});
 		} else {
 			return null;

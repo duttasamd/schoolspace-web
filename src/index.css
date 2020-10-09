@@ -21,6 +21,11 @@ code {
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
+	z-index: 100;
+}
+
+.spinner-parent {
+	opacity: 0.3;
 }
 
 .flexcenter {
@@ -53,6 +58,10 @@ code {
 
 .f-800 {
 	font-weight: 800;
+}
+
+.justify-content-space-between {
+	justify-content: space-between !important;
 }
 
 /* breakpoint rules */
