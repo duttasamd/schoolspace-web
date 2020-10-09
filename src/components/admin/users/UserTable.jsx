@@ -1,4 +1,5 @@
 import React from "react";
+import { ClipLoader } from "react-spinners";
 import styled from "styled-components";
 import CookieService from "../../../services/CookieService";
 import Table from "../../ReactTable";
@@ -70,67 +71,76 @@ export default function UserTable() {
 	const [pageCount, setPageCount] = React.useState(0);
 	const fetchIdRef = React.useRef(0);
 
-	const fetchData = React.useCallback(({ pageSize, pageIndex }) => {
-		// This will get called when the table needs new data
-		// You could fetch your data from literally anywhere,
-		// even a server. But for this example, we'll just fake it.
+	const fetchData = React.useCallback(
+		({ pageSize, pageIndex, search }) => {
+			// This will get called when the table needs new data
+			// You could fetch your data from literally anywhere,
+			// even a server. But for this example, we'll just fake it.
 
-		// Give this fetch an ID
-		const fetchId = ++fetchIdRef.current;
+			// Give this fetch an ID
+			const fetchId = ++fetchIdRef.current;
+			// Set the loading state
+			setLoading(true);
 
-		// Set the loading state
-		setLoading(true);
-
-		if (fetchId === fetchIdRef.current) {
-			// const startRow = pageSize * pageIndex;
-			// const endRow = startRow + pageSize;
-			console.log("fetching users..");
-			fetch(
-				process.env.REACT_APP_SCHOOLSPACE_API_URL +
-					"/users?" +
-					new URLSearchParams({
-						pageIndex: pageIndex,
-						pageSize: pageSize,
-					}),
-				{
-					method: "GET",
-					headers: {
-						Accept: "application/json",
-						Authorization:
-							"Bearer " + CookieService.get("access_token"),
-					},
-				}
-			)
-				.then(async (response) => {
-					const data = await response.json();
-					if (!response.ok) {
-						const error = (data && data.message) || response.status;
-						return Promise.reject(error);
+			if (fetchId === fetchIdRef.current) {
+				console.log("fetching users..");
+				fetch(
+					process.env.REACT_APP_SCHOOLSPACE_API_URL +
+						"/users?" +
+						new URLSearchParams({
+							pageIndex: pageIndex,
+							pageSize: pageSize,
+							search: search,
+						}),
+					{
+						method: "GET",
+						headers: {
+							Accept: "application/json",
+							Authorization:
+								"Bearer " + CookieService.get("access_token"),
+						},
 					}
+				)
+					.then(async (response) => {
+						const data = await response.json();
+						if (!response.ok) {
+							const error =
+								(data && data.message) || response.status;
+							return Promise.reject(error);
+						}
 
-					setData(data.data);
-					setPageCount(
-						Math.ceil(parseInt(data.recordsTotal) / pageSize)
-					);
-				})
-				.catch((error) => {
-					console.error("There was an error!", error);
-				});
-
-			setLoading(false);
-		}
-	}, []);
+						setData(data.data);
+						setPageCount(
+							Math.ceil(parseInt(data.recordsTotal) / pageSize)
+						);
+					})
+					.catch((error) => {
+						console.error("There was an error!", error);
+					})
+					.finally(() => {
+						setLoading(false);
+					});
+			}
+		},
+		[setLoading]
+	);
 
 	return (
-		<Styles>
-			<Table
-				columns={columns}
-				data={data}
-				fetchData={fetchData}
-				loading={loading}
-				pageCount={pageCount}
-				addmodal={<AddUserModal />}
-			/>
-		</Styles>
+		<>
+			<div className='spinner'>
+				<ClipLoader size={150} color={"#123abc"} loading={loading} />
+			</div>
+			<div className={loading ? "spinner-parent" : ""}>
+				<Styles>
+					<Table
+						columns={columns}
+						data={data}
+						fetchData={fetchData}
+						pageCount={pageCount}
+						addmodal={<AddUserModal />}
+					/>
+				</Styles>
+			</div>
+		</>
 	);
 }

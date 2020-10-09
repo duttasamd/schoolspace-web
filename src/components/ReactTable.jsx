@@ -1,14 +1,37 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEdit, faSearch } from "@fortawesome/free-solid-svg-icons";
-import React from "react";
-import { useTable, usePagination } from "react-table";
+import React, { useState } from "react";
+
+import { useTable, usePagination, useAsyncDebounce } from "react-table";
 import "./reacttable.css";
+
+function Search({ setSearch, gotoPage }) {
+	const [value, setValue] = React.useState([]);
+	const onChange = useAsyncDebounce((value) => {
+		setSearch(value || "");
+		gotoPage(0);
+	}, 500);
+
+	return (
+		<input
+			value={value || ""}
+			type='text'
+			className='form-control'
+			placeholder='search'
+			aria-label='search'
+			aria-describedby='basic-addon1'
+			onChange={(e) => {
+				setValue(e.target.value);
+				onChange(e.target.value);
+			}}
+		/>
+	);
+}
 
 export default function Table({
 	columns,
 	data,
 	fetchData,
-	loading,
 	pageCount: controlledPageCount,
 	addmodal,
 }) {
@@ -39,26 +62,22 @@ export default function Table({
 		usePagination
 	);
 
+	const [search, setSearch] = useState("");
+
 	React.useEffect(() => {
-		fetchData({ pageIndex, pageSize });
-	}, [fetchData, pageIndex, pageSize]);
+		fetchData({ pageIndex, pageSize, search });
+	}, [fetchData, pageIndex, pageSize, search]);
 
 	return (
 		<>
 			<div className='float-left w-25'>{addmodal}</div>
-			<div class='input-group mb-3 float-right w-50'>
-				<div class='input-group-prepend'>
-					<span class='input-group-text'>
+			<div className='input-group mb-3 float-right w-50'>
+				<div className='input-group-prepend'>
+					<span className='input-group-text'>
 						<FontAwesomeIcon icon={faSearch} />
 					</span>
 				</div>
-				<input
-					type='text'
-					class='form-control'
-					placeholder='search'
-					aria-label='search'
-					aria-describedby='basic-addon1'
-				/>
+				<Search setSearch={setSearch} gotoPage={gotoPage} />
 			</div>
 			<table {...getTableProps()}>
 				<thead>
@@ -104,15 +123,10 @@ export default function Table({
 						);
 					})}
 					<tr>
-						{loading ? (
-							// Use our custom loading state to show a loading indicator
-							<td colSpan='10000'>Loading...</td>
-						) : (
-							<td colSpan='10000'>
-								Showing {page.length} of ~
-								{controlledPageCount * pageSize} results
-							</td>
-						)}
+						<td colSpan='10000'>
+							Showing {page.length} of ~
+							{controlledPageCount * pageSize} results
+						</td>
 					</tr>
 				</tbody>
 			</table>
