@@ -42,7 +42,7 @@ class AuthenticationService {
 	logout(callback) {
 		CookieService.remove("access_token");
 		this.authenticated = false;
-		callback();
+		if (callback != null) callback();
 	}
 
 	isAuthenticated() {

@@ -51,6 +51,7 @@ export default function StudentModal(props) {
 						onChange={(e) => getSections(e.target.value)}
 						onInput={props.changeHandle}
 						required
+						className='form-control'
 					>
 						<option value=''> Select Standard </option>
 						{props.standards.map((standard) => (
@@ -79,6 +80,7 @@ export default function StudentModal(props) {
 						onChange={(e) => getRoll(e.target.value)}
 						onInput={props.changeHandle}
 						required
+						className='form-control'
 					>
 						<option value=''> Select Section </option>
 						{sections.map((section) => (
@@ -107,6 +109,7 @@ export default function StudentModal(props) {
 						placeholder={roll}
 						onChange={props.changeHandle}
 						required
+						className='form-control'
 					/>
 				</div>
 			</div>

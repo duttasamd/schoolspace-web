@@ -24,7 +24,7 @@ export default function AddUserModal() {
 	};
 
 	const getStandards = (user_role) => {
-		if (user_role === 2) {
+		if (user_role === "2") {
 			FetchService.fetch(
 				"/standards",
 				"GET",
@@ -78,7 +78,7 @@ export default function AddUserModal() {
 	// adds student modal
 	let studentModal;
 
-	if (formData.user_role === 2) {
+	if (formData.user_role === "2") {
 		studentModal = (
 			<StudentModal changeHandle={handleChange} standards={standards} />
 		);
