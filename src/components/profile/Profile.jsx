@@ -49,7 +49,7 @@ export default function Profile() {
 					
 					
 					{/* Modal */}
-					<UserPicModal />
+					<UserPicModal user_id={user.id}/>
 					
 					
 					<label className='uname mx-3'>

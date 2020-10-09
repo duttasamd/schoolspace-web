@@ -6,7 +6,52 @@ import axios from "axios";
 import FetchService from "../../../services/FetchService";
 import CookieService from "../../../services/CookieService";
 
-function UserPicModal() {
+function UserPicModal(props) {
+
+    // fetch
+    const [img1, setImg1] = useState('/img/profile/minion2.png')
+
+    const getImg1 = () => {
+		FetchService.fetch(
+			`/profiles?user_id=${props.user_id}`,
+			"GET",
+			"application/json",
+			true,
+			null,
+			(data) => {
+				setImg1('http://localhost:8000/storage/'+ data[0].display_picture_path);
+                console.log(data[0].display_picture_path);
+                console.log(img1)
+			}
+		);
+    };
+    
+    // submit
+
+    const handleSubmit = (e) => {
+        let form_data = new FormData()
+        form_data.append('display_picture_path', postImage)
+		e.preventDefault();
+		e.persist();
+		console.log('Hello ' + postImage);
+		// submit to api
+		axios
+			.post("http://localhost:8000/api/v1/profiles/image", form_data, {
+				headers: {
+					"Access-Control-Allow-Origin": "*",
+					Authorization:
+                        "Bearer " + CookieService.get("access_token"),
+                    'content-type': 'multipart/form-data',
+				},
+			})
+			.then((response) => {
+				console.log(response);
+				console.log(response.data);
+			})
+			.catch((error) => {
+				console.log(error);
+			});
+	};
 
     const [src, setSrc] = useState("/img/profile/defaultuser.png");
     const [postImage, setPostImage] = useState("/img/profile/defaultuser.png")
@@ -52,32 +97,7 @@ function UserPicModal() {
     }
 
 
-    // submit
-
-    const handleSubmit = (e) => {
-        let form_data = new FormData()
-        form_data.append('display_picture_path', postImage)
-		e.preventDefault();
-		e.persist();
-		console.log('Hello ' + postImage);
-		// submit to api
-		axios
-			.post("http://localhost:8000/api/v1/profiles/image", form_data, {
-				headers: {
-					"Access-Control-Allow-Origin": "*",
-					Authorization:
-                        "Bearer " + CookieService.get("access_token"),
-                    'content-type': 'multipart/form-data',
-				},
-			})
-			.then((response) => {
-				console.log(response);
-				console.log(response.data);
-			})
-			.catch((error) => {
-				console.log(error);
-			});
-	};
+    
 
 
     return (
@@ -87,6 +107,13 @@ function UserPicModal() {
                 className='user'
                 src={croppedImage}
                 alt=''
+                data-toggle="modal"
+                data-target="#userProfilePicModal"
+			/>
+            <img
+                className=''
+                src={img1}
+                alt='Image here'
                 data-toggle="modal"
                 data-target="#userProfilePicModal"
 			/>
@@ -112,6 +139,7 @@ function UserPicModal() {
                                 </div>
                                     <button className="btn btn-danger" onClick={getCroppedImg} >Crop Image</button>
                                     <button className="btn btn-danger" onClick={handleSubmit} >Submit</button>
+                                    <button className="btn btn-danger" onClick={getImg1} >Get Profile Image</button>
                             </div>
                         
                     
