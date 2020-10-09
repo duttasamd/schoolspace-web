@@ -55,6 +55,10 @@ code {
 	font-weight: 800;
 }
 
+.justify-content-space-between {
+	justify-content: space-between !important;
+}
+
 /* breakpoint rules */
 
 /* lg */

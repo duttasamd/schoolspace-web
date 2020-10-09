@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import FetchService from "../../../../services/FetchService";
 
-function StudentModal(props) {
+export default function StudentModal(props) {
 	const [sections, setSections] = useState([]);
 	const [roll, setRoll] = useState();
 
@@ -113,5 +113,3 @@ function StudentModal(props) {
 		</div>
 	);
 }
-
-export default StudentModal;

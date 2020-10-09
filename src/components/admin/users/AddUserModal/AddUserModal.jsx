@@ -140,6 +140,7 @@ export default function AddUserModal() {
 											name='firstname'
 											required
 											onChange={handleChange}
+											className='form-control'
 										/>
 									</div>
 								</div>
@@ -159,6 +160,7 @@ export default function AddUserModal() {
 											name='lastname'
 											onChange={handleChange}
 											required
+											className='form-control'
 										/>
 									</div>
 								</div>
@@ -178,6 +180,7 @@ export default function AddUserModal() {
 											name='email'
 											onChange={handleChange}
 											required
+											className='form-control'
 										/>
 									</div>
 								</div>
@@ -197,6 +200,7 @@ export default function AddUserModal() {
 											name='phone'
 											onChange={handleChange}
 											required
+											className='form-control'
 										/>
 									</div>
 								</div>
@@ -219,6 +223,7 @@ export default function AddUserModal() {
 											}
 											onInput={handleChange}
 											required
+											className='form-control'
 										>
 											<option value=''>
 												{" "}
@@ -239,19 +244,19 @@ export default function AddUserModal() {
 
 								{studentModal}
 
-								<div className='modal-footer justify-content-center'>
-									<button
-										type='submit'
-										className='btn btn-primary'
-									>
-										Submit
-									</button>
+								<div className='modal-footer justify-content-space-between'>
 									<button
 										type='button'
 										className='btn btn-secondary'
 										data-dismiss='modal'
 									>
 										Close
+									</button>
+									<button
+										type='submit'
+										className='btn btn-primary'
+									>
+										Submit
 									</button>
 								</div>
 							</form>
