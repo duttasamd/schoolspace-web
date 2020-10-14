@@ -22,11 +22,11 @@ class Home extends Component {
 
 	render() {
 		let userComponent;
-		if (this.state.user.role_id === 1) {
+		if (this.state.user.roleId === 1) {
 			userComponent = <AdminHome />;
-		} else if (this.state.user.role_id === 2) {
+		} else if (this.state.user.roleId === 5) {
 			userComponent = <StudentHome user={this.state.user} />;
-		} else if (this.state.user.role_id === 3) {
+		} else if (this.state.user.roleId === 4) {
 			userComponent = <TeacherHome user={this.state.user} />;
 		}
 

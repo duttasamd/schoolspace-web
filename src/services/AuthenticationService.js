@@ -10,8 +10,8 @@ class AuthenticationService {
 	login(email, password, callback) {
 		const requestOptions = {
 			method: "POST",
-			headers: { "Content-Type": "application/json" },
-			body: JSON.stringify({ username: email, password: password }),
+			headers: { "Content-Type": "application/json",},
+			body: JSON.stringify({ "username": email, "password": password }),
 		};
 
 		fetch(
@@ -20,7 +20,9 @@ class AuthenticationService {
 		)
 			.then(async (response) => {
 				const data = await response.json();
-				// check for error response
+				
+				console.log(data)
+
 				if (!response.ok) {
 					// get error message from body or default to response status
 					const error = (data && data.message) || response.status;
