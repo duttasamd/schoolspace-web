@@ -89,8 +89,8 @@ class Dashboard extends Component {
 						</div>
 						<div className='col-sm'>
 							<DashCard
-								title='Others'
-								relendpoint='-'
+								title='Staff'
+								relendpoint='/users/staffcount'
 								icon={faUserCircle}
 								dashcardclass={
 									dashcardclass + " border-left-orange"

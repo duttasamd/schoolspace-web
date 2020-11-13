@@ -104,7 +104,7 @@ export default function StudentTable() {
 								(data && data.message) || response.status;
 							return Promise.reject(error);
 						}
-
+						console.log(data);
 						setData(data.data);
 						setPageCount(
 							Math.ceil(parseInt(data.recordsTotal) / pageSize)
