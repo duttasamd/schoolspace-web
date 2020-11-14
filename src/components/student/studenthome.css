@@ -1,0 +1,64 @@
+a {
+	text-decoration: none !important;
+	color: initial !important;
+}
+
+.card-header-clean {
+	background-color: rgba(0, 0, 0, 0) !important;
+	border-bottom: 0 !important;
+}
+
+.bordercard {
+	border: 0.15em solid !important;
+}
+
+.borderred {
+	border-color: red !important;
+}
+
+.borderorange {
+	border-color: orange !important;
+}
+
+.borderblue {
+	border-color: blue !important;
+}
+
+.tilesFlexContainer {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: flex-start;
+	align-content: flex-start;
+	align-items: stretch;
+}
+
+.coursecard {
+	min-width: 200px !important;
+	width: 30%;
+	background-color: rgba(0, 100, 255, 0.1) !important;
+}
+
+.f1vw {
+	font-size: 100% !important;
+}
+
+.fw600 {
+	font-weight: 600 !important;
+}
+
+@media (max-width: 1200px) {
+	.coursecard {
+		min-width: 200px !important;
+		width: 45%;
+		background-color: rgba(0, 100, 255, 0.1) !important;
+	}
+}
+
+@media (max-width: 1000px) {
+	.coursecard {
+		min-width: 200px !important;
+		width: 100%;
+		background-color: rgba(0, 100, 255, 0.1) !important;
+	}
+}
