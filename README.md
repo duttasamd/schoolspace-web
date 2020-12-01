@@ -17,11 +17,11 @@ Clone repository into a folder.
 1. Setup the schoolspace backend project.
 In the project root:
 2. `npm install`
-3. Copy the .env.example file and rename it to .env
+3. If `.env` file is not present, create it.
   * Make sure it has:
     ```
     REACT_APP_NAME=schoolspace
-    REACT_APP_SCHOOLSPACE_API_URL=http://localhost:8000/api/v1
+    REACT_APP_SCHOOLSPACE_API_URL=http://localhost:5000/api/v1
     ```
     
 ##### That's it. You are all set.
