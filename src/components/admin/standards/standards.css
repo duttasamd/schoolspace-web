@@ -1,9 +1,13 @@
 .hflex-s {
-  display: flex;
-  flex-wrap: nowrap;
-  overflow-x: auto;
+	display: flex;
+	flex-wrap: nowrap;
+	overflow-x: auto;
 }
 
 .hflex-s .card {
-  flex: 0 0 auto;
+	flex: 0 0 auto;
+}
+
+.fsxs {
+	font-size: small;
 }

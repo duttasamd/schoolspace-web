@@ -6,7 +6,7 @@ import "./adminhome.css";
 import UserManagement from "./users/UserManagement";
 import StudentManagement from "./students/StudentManagement";
 import TeacherManagement from "./teachers/TeacherManagement";
-import StandardManagement from "./standards/StandardManagement";
+import StandardDashboard from "./standards/StandardDashboard";
 
 class AdminHome extends Component {
 	constructor(props) {
@@ -33,7 +33,6 @@ class AdminHome extends Component {
 	}
 
 	pageSelect = (page) => {
-		console.log(page);
 		this.setState({
 			currentPage: page,
 		});
@@ -55,7 +54,7 @@ class AdminHome extends Component {
 		} else if (this.state.currentPage === "teachers") {
 			dashcomponent = <TeacherManagement />;
 		} else if (this.state.currentPage === "standards") {
-			dashcomponent = <StandardManagement />;
+			dashcomponent = <StandardDashboard />;
 		}
 
 		return (

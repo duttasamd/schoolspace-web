@@ -40,11 +40,48 @@ export default function Course(props) {
                         </div>
                     </div>
                     <div className="col pt-3">
-                        <button className="btn btn-outline-primary float-right mr-3">
+                        <a href={"/forum/" + courseSection.forum_id} className="btn btn-outline-primary float-right mr-3">
                             Forum
-                        </button> 
+                        </a> 
                     </div>
-                </div>      
+                </div>
+                <div className="row my-3">
+                    <div className="card mt-3 blue w-100">
+                        <div className="card-header card-header-clean p-1">
+                            <button className="btn btn-default btn-block" data-toggle="collapse" data-target="#cannouncements" aria-expanded="true" aria-controls="#cannouncements">
+                                <span className="float-left ml-0 mr-auto"><strong>Course Announcements</strong></span>
+                                <span className="badge badge-light float-right mt-1">1</span>
+                            </button>
+                        </div>
+
+                        <div id="cannouncements" className="collapse" aria-labelledby="headingOne">
+                            <div className="card-body py-3 px-3 pb-1">
+                                Announcement 1
+                            </div>
+                        </div>
+                    </div>
+                </div> 
+                <div className="row my-3">
+                    <div className="card mt-3 red w-100">
+                        <div className="card-header card-header-clean p-1">
+                            <button className="btn btn-default btn-block" data-toggle="collapse" data-target="#cassign" aria-expanded="true" aria-controls="#cassign">
+                                <span className="float-left ml-0 mr-auto"><strong>Assignments and Examinations</strong></span>
+                                <span className="badge badge-light float-right mt-1">3</span>
+                            </button>
+                        </div>
+
+                        <div id="cassign" className="collapse" aria-labelledby="headingOne">
+                            <div className="card-body py-3 px-3 pb-1">
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div className="row my-5">
+                    <div className="col">
+                        <strong>Course Contents</strong>
+                    </div>
+                </div>
             </div>
         </div>
     );

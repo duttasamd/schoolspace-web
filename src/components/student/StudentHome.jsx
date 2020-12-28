@@ -43,7 +43,6 @@ export default function StudentHome(props) {
 			true,
 			null,
 			(data) => {
-        console.log(data);
 				setCourses(data);
 			}
 		);
