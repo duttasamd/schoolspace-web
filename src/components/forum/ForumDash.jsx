@@ -4,6 +4,7 @@ import FetchService from '../../services/FetchService';
 import Navbar from '../Navbar';
 import "./forum.css";
 import ForumTable from './ForumTable';
+//import ForumItem from './ForumItem';
 
 export default function ForumDash() {
     let { id } = useParams();
@@ -43,6 +44,9 @@ export default function ForumDash() {
                 <div className="row">
                     <ForumTable forum_id={id}/>
                 </div>
+                {/* <ForumItem 
+                    data = {forum}
+                /> */}
             </div>
         </div>
     );

@@ -15,3 +15,7 @@
 .rounded-circle {
     border-radius: 50%;
 }
+
+.forum-img-size {
+    max-width: 40px;
+}

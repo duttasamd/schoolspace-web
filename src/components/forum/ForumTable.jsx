@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import CookieService from "../../services/CookieService";
 import Table from "../ReactTable";
+import ForumItem from "./ForumItem";
 
 const Styles = styled.div`
 	padding: 1rem;
@@ -125,6 +126,9 @@ export default function ForumTable(props) {
 				fetchData={fetchData}
 				loading={loading}
 				pageCount={pageCount}
+			/>
+			<ForumItem 
+				data={data}
 			/>
 		</Styles>
 	);
