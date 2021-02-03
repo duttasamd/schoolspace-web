@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import CookieService from "../../services/CookieService";
 import Table from "../ReactTable";
-import ForumItem from "./ForumItem";
+import ForumItemBody from "./ForumItemBody"
 
 const Styles = styled.div`
 	padding: 1rem;
@@ -118,6 +118,23 @@ export default function ForumTable(props) {
 		[setLoading]
 	);
 
+	// ForumItemBody
+	let forumContent = <ForumItemBody />
+
+	if (data) {
+
+        forumContent = 
+        data.map ((item, key) => 
+			<ForumItemBody 
+				key={item.id} // https://reactjs.org/docs/lists-and-keys.html#keys
+                username={item.username}
+                post={item.post}
+                replies={item.replies}
+            />
+        )
+
+    }
+
 	return (
 		<Styles>
 			<Table
@@ -127,9 +144,9 @@ export default function ForumTable(props) {
 				loading={loading}
 				pageCount={pageCount}
 			/>
-			<ForumItem 
-				data={data}
-			/>
+
+			{forumContent}
+
 		</Styles>
 	);
 }
