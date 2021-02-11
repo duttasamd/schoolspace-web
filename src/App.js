@@ -1,7 +1,7 @@
 import React from "react";
 import "./App.css";
 import Login from "./components/login/Login";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { HashRouter as Router, Route, Switch } from "react-router-dom";
 import Home from "./components/home/Home";
 import { ProtectedRoute } from "./protected.route";
 import Profile from "./components/profile/Profile";
@@ -10,7 +10,7 @@ import ForumDash from "./components/forum/ForumDash";
 
 function App() {
 	return (
-		<Router basename={process.env.PUBLIC_URL}>
+		<Router>
 			<Switch>
 				<Route exact path='/login' component={Login} />
 				<ProtectedRoute exact path='/' component={Home} />
