@@ -57,7 +57,7 @@ export default function StudentHome(props) {
               <div className="tilesFlexContainer">
                 {
                   courses.map((course) => (
-                    <a href={ "/section/course/" + course.id } key={course.id}>
+                    <a href={ "/#/section/course/" + course.id } key={course.id}>
                       <CourseCard course={course}/>
                     </a>
                   ))

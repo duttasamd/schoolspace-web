@@ -10,24 +10,11 @@ class Navbar extends Component {
 
 	componentDidMount() {
 		UserService.get((json) => {
-			console.log(json);
 			this.setState({ user: json });
-			console.log(this.state);
 		});
 	}
 
 	render() {
-		console.log("rendering");
-		let adminlink;
-
-		if (this.state.user && this.state.user.isAdmin) {
-			adminlink = (
-				<a className='dropdown-item' href='/admin'>
-					Admin Page
-				</a>
-			);
-		}
-
 		let authenticationcontext;
 
 		if (this.state.user) {
@@ -37,7 +24,7 @@ class Navbar extends Component {
 						<a
 							id='navbarDropdown'
 							className='nav-link dropdown-toggle'
-							href='/profile'
+							href={"/#/user/" + this.state.user.username}
 							role='button'
 							data-toggle='dropdown'
 							aria-haspopup='true'
@@ -53,7 +40,10 @@ class Navbar extends Component {
 							className='dropdown-menu dropdown-menu-right'
 							aria-labelledby='navbarDropdown'
 						>
-							{adminlink}
+							<a className='dropdown-item' 
+								href={"/#/user/" + this.state.user.username}>
+									Profile
+							</a>
 							<Logout />
 						</div>
 					</li>
@@ -63,13 +53,13 @@ class Navbar extends Component {
 			authenticationcontext = (
 				<ul className='navbar-nav ml-auto'>
 					<li className='nav-item'>
-						<a className='nav-link' href='/login'>
+						<a className='nav-link' href='/#/login'>
 							Login
 						</a>
 					</li>
 
 					<li className='nav-item'>
-						<a className='nav-link' href='/register'>
+						<a className='nav-link' href='/#/register'>
 							Register
 						</a>
 					</li>

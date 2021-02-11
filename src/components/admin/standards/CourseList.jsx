@@ -32,7 +32,7 @@ export default function CourseList(props) {
 			</div>
             <div className="row my-5 w-100">
                 {courses.map((course) => (
-                    <a href={ "/section/course/" + course.id } key={course.id}>
+                    <a href={ "/#/section/course/" + course.id } key={course.id}>
                         <CourseCard course={course} setSection={props.setSection}/>
                     </a>
                 ))}

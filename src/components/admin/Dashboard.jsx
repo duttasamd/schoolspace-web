@@ -77,7 +77,9 @@ class Dashboard extends Component {
 								}
 							/>
 						</div>
-						<div className='col-sm'>
+						<div className='col-sm'
+							onClick={() => this.props.pageSelect("teachers")}
+						>
 							<DashCard
 								title='Teachers'
 								relendpoint='/teachers/count'
@@ -87,7 +89,9 @@ class Dashboard extends Component {
 								}
 							/>
 						</div>
-						<div className='col-sm'>
+						<div className='col-sm'
+							onClick={() => this.props.pageSelect("staff")}
+						>
 							<DashCard
 								title='Staff'
 								relendpoint='/users/staffcount'
@@ -104,7 +108,9 @@ class Dashboard extends Component {
 						</div>
 						<div className='col-md-3'>
 							<div className='row'>
-								<div className='col'>
+								<div className='col'
+									onClick={() => this.props.pageSelect("standards")}	
+								>
 									<DashCard
 										title='Standards'
 										relendpoint='/standards/count'
