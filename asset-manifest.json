@@ -1,25 +1,25 @@
 {
   "files": {
-    "main.css": "http://demo.schoolspace.co.in/static/css/main.d1b29013.chunk.css",
-    "main.js": "http://demo.schoolspace.co.in/static/js/main.05c78e4e.chunk.js",
-    "main.js.map": "http://demo.schoolspace.co.in/static/js/main.05c78e4e.chunk.js.map",
-    "runtime-main.js": "http://demo.schoolspace.co.in/static/js/runtime-main.78aff0a9.js",
-    "runtime-main.js.map": "http://demo.schoolspace.co.in/static/js/runtime-main.78aff0a9.js.map",
-    "static/css/2.bf9db4fe.chunk.css": "http://demo.schoolspace.co.in/static/css/2.bf9db4fe.chunk.css",
-    "static/js/2.62f9ddd7.chunk.js": "http://demo.schoolspace.co.in/static/js/2.62f9ddd7.chunk.js",
-    "static/js/2.62f9ddd7.chunk.js.map": "http://demo.schoolspace.co.in/static/js/2.62f9ddd7.chunk.js.map",
-    "index.html": "http://demo.schoolspace.co.in/index.html",
-    "precache-manifest.0388049a99fcedd61b1fd0c3c3585642.js": "http://demo.schoolspace.co.in/precache-manifest.0388049a99fcedd61b1fd0c3c3585642.js",
-    "service-worker.js": "http://demo.schoolspace.co.in/service-worker.js",
-    "static/css/2.bf9db4fe.chunk.css.map": "http://demo.schoolspace.co.in/static/css/2.bf9db4fe.chunk.css.map",
-    "static/css/main.d1b29013.chunk.css.map": "http://demo.schoolspace.co.in/static/css/main.d1b29013.chunk.css.map",
-    "static/js/2.62f9ddd7.chunk.js.LICENSE.txt": "http://demo.schoolspace.co.in/static/js/2.62f9ddd7.chunk.js.LICENSE.txt"
+    "main.css": "https://demo.schoolspace.co.in/static/css/main.d1b29013.chunk.css",
+    "main.js": "https://demo.schoolspace.co.in/static/js/main.2b9592c5.chunk.js",
+    "main.js.map": "https://demo.schoolspace.co.in/static/js/main.2b9592c5.chunk.js.map",
+    "runtime-main.js": "https://demo.schoolspace.co.in/static/js/runtime-main.87dc2898.js",
+    "runtime-main.js.map": "https://demo.schoolspace.co.in/static/js/runtime-main.87dc2898.js.map",
+    "static/css/2.bf9db4fe.chunk.css": "https://demo.schoolspace.co.in/static/css/2.bf9db4fe.chunk.css",
+    "static/js/2.747e9de9.chunk.js": "https://demo.schoolspace.co.in/static/js/2.747e9de9.chunk.js",
+    "static/js/2.747e9de9.chunk.js.map": "https://demo.schoolspace.co.in/static/js/2.747e9de9.chunk.js.map",
+    "index.html": "https://demo.schoolspace.co.in/index.html",
+    "precache-manifest.07c0c18603203728e328ea2c53e502ce.js": "https://demo.schoolspace.co.in/precache-manifest.07c0c18603203728e328ea2c53e502ce.js",
+    "service-worker.js": "https://demo.schoolspace.co.in/service-worker.js",
+    "static/css/2.bf9db4fe.chunk.css.map": "https://demo.schoolspace.co.in/static/css/2.bf9db4fe.chunk.css.map",
+    "static/css/main.d1b29013.chunk.css.map": "https://demo.schoolspace.co.in/static/css/main.d1b29013.chunk.css.map",
+    "static/js/2.747e9de9.chunk.js.LICENSE.txt": "https://demo.schoolspace.co.in/static/js/2.747e9de9.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.78aff0a9.js",
+    "static/js/runtime-main.87dc2898.js",
     "static/css/2.bf9db4fe.chunk.css",
-    "static/js/2.62f9ddd7.chunk.js",
+    "static/js/2.747e9de9.chunk.js",
     "static/css/main.d1b29013.chunk.css",
-    "static/js/main.05c78e4e.chunk.js"
+    "static/js/main.2b9592c5.chunk.js"
   ]
 }
