@@ -1,38 +1,50 @@
 import React, {useState} from 'react';
-import SunEditor, {buttonList} from 'suneditor-react';
-import 'suneditor/dist/css/suneditor.min.css'; // Import Sun Editor's CSS File
+import SunEditor from 'suneditor-react';
+import 'suneditor/dist/css/suneditor.min.css';
+import parse from 'html-react-parser';
+// import { Gear } from 'react-bootstrap-icons';
 
-function TextEditor() {
+function TextEditor(props) {
 
     const [content, setContent] = useState("");
+    // const [bar, setBar] = useState(false);
+
+
+    const onSubmit = () => {
+        props.handleContent(content);
+    };
 
     
-    const onSubmit = () => {
-        console.log(content)
-    };
-    
+    // const showBar = () => {
+    //     setBar(true);
+    //     document.getElementById("bar").style.display = "none"
+    // }
 
     return(
         <div className="container">
+            {/* <Gear id="bar" onClick={showBar} /> */}
             <SunEditor
+                showToolbar="false"
                 setDefaultStyle="font-family: arial; font-size: 20px;"
                 height="250px"
                 setOptions={{
-                    buttonList: [
-                                ['font', 'fontSize', 'formatBlock', 'align'], 
-                                ['paragraphStyle', 'blockquote', ],
-                                ['bold', 'underline', 'italic', 'strike', 'subscript', 'superscript'],  
-                                ['fontColor', 'hiliteColor', 'list', 'horizontalRule', 'lineHeight', 'table',], 
-                                ['undo','redo'],
-                                ],
+                    mode: "inline",
+                    showPathLabel: false,
+                    resizingBar: true,
+                    buttonList: [[
+                                'font', 'fontSize', 'formatBlock', 'align', 
+                                'paragraphStyle', 'blockquote',
+                                'bold', 'underline', 'italic', 'strike', 'subscript', 'superscript',  
+                                'fontColor', 'hiliteColor', 'list', 'horizontalRule', 'lineHeight', 'table', 
+                                'undo','redo',
+                    ]],
                     
                 }}
             setContent=""
             onChange={setContent}
             />
-            {/* <div>{content}</div> */}
+            {/* <div>{parse(content)}</div> */}
             <button onClick={() => onSubmit()} className="btn btn-primary mt-2 btn-lg">Post</button>
-            
             
 
         </div>
