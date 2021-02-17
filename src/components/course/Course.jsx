@@ -40,7 +40,7 @@ export default function Course(props) {
                         </div>
                     </div>
                     <div className="col pt-3">
-                        <a href={"/forum/" + courseSection.forum_id} className="btn btn-outline-primary float-right mr-3">
+                        <a href={"/#/forum/" + courseSection.forum_id} className="btn btn-outline-primary float-right mr-3">
                             Forum
                         </a> 
                     </div>

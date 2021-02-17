@@ -22,7 +22,7 @@ class Home extends Component {
 
 	render() {
 		let userComponent;
-		if (this.state.user.role_id === 1) {
+		if (this.state.user.role_id === 1 || this.state.user.role_id === 2) {
 			userComponent = <AdminHome />;
 		} else if (this.state.user.role_id === 5) {
 			userComponent = <StudentHome user={this.state.user} />;
