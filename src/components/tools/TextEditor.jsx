@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import SunEditor from 'suneditor-react';
 import 'suneditor/dist/css/suneditor.min.css';
-import parse from 'html-react-parser';
+//import parse from 'html-react-parser';
 // import { Gear } from 'react-bootstrap-icons';
 
 function TextEditor(props) {
@@ -10,9 +10,9 @@ function TextEditor(props) {
     // const [bar, setBar] = useState(false);
 
 
-    const onSubmit = () => {
-        props.handleContent(content);
-    };
+    // const onSubmit = () => {
+    //     props.handleContent(content);
+    // };
 
     
     // const showBar = () => {
@@ -21,7 +21,7 @@ function TextEditor(props) {
     // }
 
     return(
-        <div className="container">
+        <div className="">
             {/* <Gear id="bar" onClick={showBar} /> */}
             <SunEditor
                 showToolbar="false"
@@ -42,9 +42,10 @@ function TextEditor(props) {
                 }}
             setContent=""
             onChange={setContent}
+            onChange={props.getPost}
             />
             {/* <div>{parse(content)}</div> */}
-            <button onClick={() => onSubmit()} className="btn btn-primary mt-2 btn-lg">Post</button>
+            {/* <button onClick={() => onSubmit()} className="btn btn-primary mt-2 btn-lg">Post</button> */}
             
 
         </div>
