@@ -4,19 +4,19 @@ import auth from "../../services/AuthenticationService";
 import { useHistory } from "react-router-dom";
 
 export default function Login(props) {
-	const [email, setEmail] = useState("");
+	const [emailOrUsername, setEmailOrUsername] = useState("");
 	const [password, setPassword] = useState("");
 	const [error, setError] = useState("");
 	const history = useHistory();
 
 	function validateForm() {
-		return email.length > 0 && password.length > 0;
+		return emailOrUsername.length > 0 && password.length > 0;
 	}
 
 	function handleSubmit(event) {
-		auth.login(email, password, (error) => {
+		auth.login(emailOrUsername, password, (error) => {
 			if (error != null) {
-				setError("Invalid login attempt. Please check email/password.");
+				setError("Invalid login attempt. Please check emailOrUsername/password.");
 			} else {
 				setError("");
 				history.push("/");
@@ -33,13 +33,13 @@ export default function Login(props) {
 				<form onSubmit={handleSubmit}>
 					<label className='errormessage'>{error}</label>
 					<input
-						type='email'
-						name='email'
-						id='email'
-						placeholder='email'
+						type='text'
+						name='emailOrUsername'
+						id='emailOrUsername'
+						placeholder='emailOrUsername'
 						className='form-control mb-3'
-						value={email}
-						onChange={(e) => setEmail(e.target.value)}
+						value={emailOrUsername}
+						onChange={(e) => setEmailOrUsername(e.target.value)}
 					/>
 					<input
 						type='password'
