@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import UserService from "../services/UserService";
 import Logout from "./login/Logout";
+import { Redirect } from "react-router-dom";
 
 class Navbar extends Component {
 	constructor() {
@@ -9,9 +10,18 @@ class Navbar extends Component {
 	}
 
 	componentDidMount() {
-		UserService.get((json) => {
-			this.setState({ user: json });
-		});
+		try	{
+			console.log("Getting User Nav");
+			UserService.get((user) => {
+				this.setState({ loading: false, user: user });
+			});
+		} catch(err) {
+			return <Redirect
+				to={{
+					pathname: "/login"
+				}}
+			/>
+		}
 	}
 
 	render() {

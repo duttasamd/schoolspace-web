@@ -1,25 +1,19 @@
 import { useEffect, useState } from "react";
 import React from "react";
-import FetchService from "../../services/FetchService";
 import { useParams } from "react-router-dom";
 import Navbar from "../Navbar";
+import CourseContent from "./CourseContent";
+import authAxios from "../../utils/authAxios";
 
 export default function Course(props) {
     let { id } = useParams();
     const [courseSection, setCourseSection] = useState([]);
 
 	useEffect(() => {
-		FetchService.fetch(
-			"/coursesection/get/" + id,
-			"GET",
-			"application/json",
-            true,
-            null,
-			(data) => {
-                console.log(data);
-				setCourseSection(data);
-			}
-		);
+        authAxios.get(`/coursesection/get/${id}`)
+        .then((response) => {
+            setCourseSection(response.data);
+        })
     }, []);
 
     return(
@@ -77,11 +71,7 @@ export default function Course(props) {
                         </div>
                     </div>
                 </div>
-                <div className="row my-5">
-                    <div className="col">
-                        <strong>Course Contents</strong>
-                    </div>
-                </div>
+                <CourseContent/>
             </div>
         </div>
     );

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import FetchService from '../../services/FetchService';
+import authAxios from '../../utils/authAxios';
 import Navbar from '../Navbar';
 import "./forum.css";
 import ForumTable from './ForumTable';
@@ -10,17 +10,10 @@ export default function ForumDash() {
     const [forum, setForum] = useState({});
 
     useEffect(() => {
-		FetchService.fetch(
-			"/forums/get/" + id,
-			"GET",
-			"application/json",
-            true,
-            null,
-			(data) => {
-                console.log(data);
-				setForum(data);
-			}
-		);
+        authAxios.get(`/forums/get/${id}`)
+		.then((response) => {
+			setForum(response.data);
+		})
     }, []);
 
     return (

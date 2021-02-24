@@ -1,27 +1,21 @@
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { getUnequalProps } from '@fullcalendar/react';
 import React from 'react';
 import { useEffect, useState } from "react";
-import FetchService from "../../../services/FetchService";
+import authAxios from '../../../utils/authAxios';
 import SectionCard from './SectionCard';
 
 export default function SectionList(props) {
     const [sections, setSections] = useState([]);
     
     useEffect(() => {
-		FetchService.fetch(
+        authAxios.get(
 			"/sections?" + new URLSearchParams({
                 standard_id: props.standard_id
-            }),
-			"GET",
-			"application/json",
-            true,
-            null,
-			(sections) => {
-				setSections(sections);
-			}
-		);
+            })
+		).then((response) => {
+			setSections(response.data)
+		})
     }, []);
     
     return(
@@ -32,8 +26,8 @@ export default function SectionList(props) {
                 <FontAwesomeIcon icon={faArrowLeft} />
 			</div>
             <div className="row my-5 w-100">
-                {sections.map((block) => (
-                    <SectionCard section={block} setSection={props.setSection}/>
+                {sections.map((section) => (
+                    <SectionCard section={section} setSection={props.setSection} key={section.id}/>
                 ))}
             </div>
         </div>

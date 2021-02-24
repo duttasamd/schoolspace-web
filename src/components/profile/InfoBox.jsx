@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import FetchService from "../../services/FetchService";
+import authAxios from "../../utils/authAxios";
 
 export default function InfoBox(props) {
 	let role;
@@ -18,51 +18,47 @@ export default function InfoBox(props) {
 			role = "Student";
 	}
 
+	function populateStudentDetails(student) {
+		if (student != null) {
+			setStudydetails(
+				<div>
+					<div className='row'>
+						<div className='col'>
+							<label>Class :</label>
+						</div>
+						<div className='col'>
+							<label>
+								{student.section.standard.name}
+							</label>
+						</div>
+					</div>
+					<div className='row'>
+						<div className='col'>
+							<label>Section :</label>
+						</div>
+						<div className='col'>
+							<label>{student.section.name}</label>
+						</div>
+					</div>
+					<div className='row'>
+						<div className='col'>
+							<label>Roll :</label>
+						</div>
+						<div className='col'>
+							<label>{student.roll}</label>
+						</div>
+					</div>
+				</div>
+			);
+		}
+	}
+
 	useEffect(() => {
 		if (props.user.role_id === 2) {
-			let endpoint = "/user/student/" + props.user.id;
-			console.log("student");
-			FetchService.fetch(
-				endpoint,
-				"GET",
-				"application/json",
-				false,
-				null,
-				(student) => {
-					if (student != null) {
-						setStudydetails(
-							<div>
-								<div className='row'>
-									<div className='col'>
-										<label>Class :</label>
-									</div>
-									<div className='col'>
-										<label>
-											{student.section.standard.name}
-										</label>
-									</div>
-								</div>
-								<div className='row'>
-									<div className='col'>
-										<label>Section :</label>
-									</div>
-									<div className='col'>
-										<label>{student.section.name}</label>
-									</div>
-								</div>
-								<div className='row'>
-									<div className='col'>
-										<label>Roll :</label>
-									</div>
-									<div className='col'>
-										<label>{student.roll}</label>
-									</div>
-								</div>
-							</div>
-						);
-					}
-				}
-			);
+			authAxios.get(`/user/student/${props.user.id}`)
+			.then((response) => {
+				populateStudentDetails(response.data);
+			})
 		} else {
 			console.log(props.user.role_id);
 			console.log("Not a student.");
