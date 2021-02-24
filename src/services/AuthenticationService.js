@@ -1,6 +1,5 @@
 import CookieService from "./CookieService";
 import axios from 'axios';
-import inMemoryTokenStorage from './../utils/inMemoryTokenStorage';
 
 const moment = require('moment');
 
