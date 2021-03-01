@@ -33,10 +33,10 @@ authAxios.interceptors.request.use(
 authAxios.interceptors.response.use(
     response => response,
     error => {
-        if ([401, 403].includes(error.response.status)) {
+        if (error.response && [401, 403].includes(error.response.status)) {
             window.location.href = `${process.env.REACT_APP_SCHOOLSPACE_API_URL}/#/login`;
-            return Promise.reject(error);
         }
+        return Promise.reject(error);
     }
 );
 

@@ -1,0 +1,8 @@
+.dropzonestyle {
+	align-items: "center";
+	padding: "20px";
+	border: "5px dashed #eeeeee";
+	color: "#bdbdbd";
+	outline: "none";
+	transition: "border .24s ease-in-out";
+}
