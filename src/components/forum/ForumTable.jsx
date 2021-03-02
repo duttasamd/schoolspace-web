@@ -110,12 +110,9 @@ export default function ForumTable(props) {
 					.finally(() => {
 						setLoading(false);
 					});
-
-				// Your server could send back total page count.
-				// For now we'll just fake it, too
 			}
 		},
-		[setLoading]
+		[]
 	);
 
 	// ForumItemBody

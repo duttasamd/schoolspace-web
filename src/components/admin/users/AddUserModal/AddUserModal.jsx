@@ -1,41 +1,27 @@
 import React, { useState } from "react";
 import axios from "axios";
-import FetchService from "../../../../services/FetchService";
 import CookieService from "../../../../services/CookieService";
 import StudentModal from "./StudentModal";
 import FormSubmit from "../../../tools/FormSubmit";
+import authAxios from "../../../../utils/authAxios";
 
 export default function AddUserModal() {
 	const [roles, setRoles] = useState([]);
 	const [standards, setStandards] = useState([]);
 
 	const getRoles = () => {
-		FetchService.fetch(
-			"/roles",
-			"GET",
-			"application/json",
-			true,
-			null,
-			(data) => {
-				setRoles(data);
-				console.log(data);
-			}
-		);
+		authAxios.get("/roles")
+		.then((response) => {
+			setRoles(response.data);
+		})
 	};
 
 	const getStandards = (user_role) => {
 		if (user_role === "2") {
-			FetchService.fetch(
-				"/standards",
-				"GET",
-				"application/json",
-				true,
-				null,
-				(data) => {
-					setStandards(data);
-					console.log(data);
-				}
-			);
+			authAxios.get("/standards")
+			.then((response) => {
+				setStandards(response.data);
+			})
 		}
 	};
 
@@ -47,7 +33,6 @@ export default function AddUserModal() {
 		e.preventDefault();
 		e.persist();
 		console.log(JSON.stringify(formData));
-		// submit to api
 		axios
 			.post("http://localhost:8000/api/v1/users/store", formData, {
 				headers: {

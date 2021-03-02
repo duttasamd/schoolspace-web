@@ -13,17 +13,20 @@ export default function Login(props) {
 		return emailOrUsername.length > 0 && password.length > 0;
 	}
 
-	function handleSubmit(event) {
-		auth.login(emailOrUsername, password, (error) => {
-			if (error != null) {
-				setError("Invalid login attempt. Please check emailOrUsername/password.");
-			} else {
+	async function handleSubmit(event) {
+		event.preventDefault();
+		try {
+			const isLoggedIn = await auth.login(emailOrUsername, password);
+			if(isLoggedIn) {
+				console.log("Successful");
 				setError("");
 				history.push("/");
+			} else {
+				setError("Invalid login attempt. Please check email/password.");
 			}
-		});
-
-		event.preventDefault();
+		} catch(error) {
+			setError("Invalid login attempt. Please check email/password.");
+		}
 	}
 
 	return (

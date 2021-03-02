@@ -2,8 +2,8 @@ import StandardCard from "./StandardCard";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from 'react';
 import { useEffect, useState } from "react";
-import { faEdit, faSearch } from "@fortawesome/free-solid-svg-icons";
-import FetchService from "../../../services/FetchService";
+import { faSearch } from "@fortawesome/free-solid-svg-icons";
+import authAxios from '../../../utils/authAxios'
 
 function Search({ setSearch }) {
 	const [value, setValue] = React.useState([]);
@@ -32,16 +32,10 @@ export default function StandardList(props) {
 	const [search, setSearch] = useState("");
 
 	useEffect(() => {
-		FetchService.fetch(
-			"/standards",
-			"GET",
-			"application/json",
-			true,
-			{search : search},
-			(data) => {
-				setStandards(data);
-			}
-		);
+		authAxios.get("/standards")
+		.then((response) => {
+			setStandards(response.data);
+		})
 	}, [search]);
 
 	return (
@@ -55,8 +49,8 @@ export default function StandardList(props) {
 				<Search setSearch={setSearch} />
 			</div>
 			<div className="row my-5 w-100">
-				{standards.map((block) => (
-					<StandardCard standard={block} setStandard={props.setStandard}/>
+				{standards.map((standard) => (
+					<StandardCard standard={standard} setStandard={props.setStandard} key={standard.id}/>
 				))}
 			</div>
 		</div>

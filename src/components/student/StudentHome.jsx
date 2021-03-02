@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import React from "react";
-import FetchService from "../../services/FetchService";
+import authAxios from '../../utils/authAxios';
 import Navbar from "../Navbar";
 import CollapseCard from "./CollapseCard";
 import "./studenthome.css";
@@ -36,16 +36,10 @@ export default function StudentHome(props) {
   const [courses, setCourses] = useState([]);
 
 	useEffect(() => {
-		FetchService.fetch(
-			"/courses/listforuser",
-			"GET",
-			"application/json",
-			true,
-			null,
-			(data) => {
-				setCourses(data);
-			}
-		);
+    authAxios.get("/courses/listforuser")
+    .then((response) => {
+			setCourses(response.data)
+		})
   }, []);
   
   return (

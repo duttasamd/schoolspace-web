@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { ClipLoader } from "react-spinners";
-import FetchService from "../../services/FetchService";
+import authAxios from "../../utils/authAxios";
 import Navbar from "../Navbar";
 import InfoBox from "./InfoBox";
 import "./profile.css";
@@ -18,18 +18,11 @@ export default function Profile() {
 	console.log({ loading });
 
 	useEffect(() => {
-		let endpoint = "/user/" + id;
-		FetchService.fetch(
-			endpoint,
-			"GET",
-			"application/json",
-			false,
-			null,
-			(user) => {
-				setUser(user);
-				setLoading(false);
-			}
-		);
+		authAxios.get(`/user/${id}`)
+        .then((response) => {
+			setUser(response.data);
+			setLoading(false);
+        })
 	}, []);
 
 	return (

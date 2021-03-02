@@ -1,36 +1,23 @@
 import React, { useState } from "react";
-import FetchService from "../../../../services/FetchService";
+import authAxios from "../../../../utils/authAxios";
 
 export default function StudentModal(props) {
 	const [sections, setSections] = useState([]);
 	const [roll, setRoll] = useState();
 
 	const getSections = (standard_id) => {
-		FetchService.fetch(
-			`/sections?standard_id=${standard_id}`,
-			"GET",
-			"application/json",
-			true,
-			null,
-			(data) => {
-				setSections(data);
-				console.log(data);
-			}
-		);
+		authAxios.get(`/sections?standard_id=${standard_id}`)
+		.then((response) => {
+			setSections(response.data);
+		})
 	};
 
 	const getRoll = (section_id) => {
-		FetchService.fetch(
-			`/students/nextroll?section=${section_id}`,
-			"GET",
-			"application/json",
-			true,
-			null,
-			(data) => {
-				setRoll(data);
-				console.log(data);
-			}
-		);
+		authAxios.get(`/students/nextroll?section=${section_id}`)
+		.then((response) => {
+			setRoll(response.data);
+		})
+		
 	};
 
 	return (

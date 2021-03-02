@@ -1,54 +1,51 @@
 import CookieService from "./CookieService";
+import axios from 'axios';
+
+const moment = require('moment');
 
 class AuthenticationService {
-	constructor() {
-		const token = CookieService.get("access_token");
-		// TODO: Check if access_token is valid.
-		token ? (this.authenticated = true) : (this.authenticated = false);
-	}
+	async login(username, password) {
+		const response = await axios({
+			method:'post',
+			url : `${process.env.REACT_APP_SCHOOLSPACE_API_URL}/login`,
+			auth: {
+				username: username,
+				password: password
+			}
+		});
 
-	login(email, password, callback) {
-		const requestOptions = {
-			method: "POST",
-			headers: { "Content-Type": "application/json",},
-			body: JSON.stringify({ "username": email, "password": password }),
-		};
+		if(response.status !== 200)
+			Promise.reject(new Error("Could not log in."));
 
-		fetch(
-			process.env.REACT_APP_SCHOOLSPACE_API_URL + "/login",
-			requestOptions
-		)
-			.then(async (response) => {
-				const data = await response.json();
-				
-				console.log(data)
+		CookieService.setToken(response.data);
 
-				if (!response.ok) {
-					// get error message from body or default to response status
-					const error = (data && data.message) || response.status;
-					return Promise.reject(error);
-				}
-
-				this.authenticated = true;
-				const options = { path: "/", sameSite: "strict" };
-				CookieService.set("access_token", data.access_token, options);
-
-				callback();
-			})
-			.catch((error) => {
-				console.error("ERROR : ", error);
-				callback(error);
-			});
+		return true;
 	}
 
 	logout(callback) {
-		CookieService.remove("access_token");
-		this.authenticated = false;
-		if (callback != null) callback();
+		CookieService.eraseToken();
+
+		if (callback != null) 
+			callback();
+
 	}
 
 	isAuthenticated() {
-		return this.authenticated;
+		console.log("In is authenticated.");
+		const access_token = CookieService.get('access_token');
+		let expires_at = CookieService.get('expires_at');
+
+		if(!access_token)
+			return false;
+
+		expires_at = moment.utc(expires_at);
+
+		if(expires_at.isBefore(moment.utc())) {
+			this.logout();
+			return false;
+		}
+
+		return true;
 	}
 }
 

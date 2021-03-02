@@ -1,7 +1,7 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { Component } from "react";
 import { ClipLoader } from "react-spinners";
-import FetchService from "../../services/FetchService";
+import authAxios from './../../utils/authAxios';
 
 class DashCard extends Component {
 	constructor(props) {
@@ -13,17 +13,12 @@ class DashCard extends Component {
 	}
 
 	componentDidMount() {
-		FetchService.fetch(
-			this.props.relendpoint,
-			"GET",
-			"text/plain",
-			true,
-			null,
-			(data) => {
-				this.loading = false;
-				this.setState({ stats: data });
-			}
-		);
+		authAxios.get(
+			this.props.relendpoint
+		).then((response) => {
+			this.loading = false;
+			this.setState({ stats: response.data });
+		})
 	}
 
 	render() {
