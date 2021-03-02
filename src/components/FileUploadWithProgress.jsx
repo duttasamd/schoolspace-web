@@ -62,7 +62,9 @@ export default function FileUploadWithProgress(props) {
                 }
             };
 
-            axios.put(signedUrl, props.file, options).catch((err) => console.log(err));
+            axios.put(signedUrl, props.file, options).then((res) => {
+                props.onUploaded(props.file.name, resposne.data.fileId);
+            }).catch((err) => console.log(err));
         }).catch((error) => {
             console.log(error);
         })

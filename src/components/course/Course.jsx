@@ -40,7 +40,7 @@ export default function Course(props) {
                     </div>
                 </div>
                 <div className="row my-3">
-                    <div className="card mt-3 blue w-100">
+                    <div className="card mt-3 blue w-100 borderred">
                         <div className="card-header card-header-clean p-1">
                             <button className="btn btn-default btn-block" data-toggle="collapse" data-target="#cannouncements" aria-expanded="true" aria-controls="#cannouncements">
                                 <span className="float-left ml-0 mr-auto"><strong>Course Announcements</strong></span>
@@ -71,7 +71,7 @@ export default function Course(props) {
                         </div>
                     </div>
                 </div>
-                <CourseContent/>
+                <CourseContent courseSectionId={id}/>
             </div>
         </div>
     );
