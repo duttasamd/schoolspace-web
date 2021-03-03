@@ -6,19 +6,23 @@ import CourseContentItem from './CourseContentItem';
 export default function CourseContent(props) {
     const [courseContentList, setCourseContentList] = useState([]);
     useEffect(() => {
+        getCourseContent()
+    },[]);
+
+    const getCourseContent = () => {
         authAxios.get('/coursecontents?' + new URLSearchParams({
             courseSectionId: props.courseSectionId,
             onlyIds : true
         })).then((response) => {
             setCourseContentList(response.data);
         })
-    },[]);
+    }
 
     return (
         <div>
-            <div className="row mt-5">
-                <div className="col-2"><strong>Course Contents</strong></div>
-                <div className="offset-8 col-2"><CourseContentAdd courseSectionId={props.courseSectionId}/></div>
+            <div className="d-flex mt-5">
+                <div className="mr-auto"><strong>Course Contents</strong></div>
+                <CourseContentAdd courseSectionId={props.courseSectionId} onClose={getCourseContent} className="ml-auto"/>
             </div>
             {courseContentList.map(
                 (courseContentId) => <CourseContentItem id={courseContentId} key={courseContentId}/>)}
