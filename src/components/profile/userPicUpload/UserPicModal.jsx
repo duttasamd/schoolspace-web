@@ -3,7 +3,6 @@ import './userpicmodal.css'
 import ReactCrop from 'react-image-crop'
 import 'react-image-crop/dist/ReactCrop.css'
 import axios from "axios";
-import FetchService from "../../../services/FetchService";
 import CookieService from "../../../services/CookieService";
 
 function UserPicModal(props) {
@@ -18,33 +17,12 @@ function UserPicModal(props) {
     
     // fetch userImage and set initial browseImg
     const [userImage, setUserImage] = useState()
-    const getuserImage = () => {
-		FetchService.fetch(
-			`/profiles?user_id=${props.user_id}`,
-			"GET",
-			"application/json",
-			true,
-			null,
-			(data) => {
-                let fetchedImage = 'http://localhost:8000/storage/'+ data[0].display_picture_path;
-                if (data[0].display_picture_path == null) {
-                    setUserImage("/img/profile/defaultuser.png")
-                } else {
-                    setUserImage(fetchedImage);
-                }
-                // bug here crossorigin image
-                if (!browseImg && data[0].display_picture_path != null){
-                    setBrowseImg(fetchedImage)
-                } else {
-                    setBrowseImg("/img/profile/defaultuser.png")
-                }
-                
-			}
-		);
-    };
+    // const getuserImage = () => {
+	// 
+    // };
     // setting profile image at the begining
     useEffect(() => {
-        getuserImage();
+        // getuserImage();
     },[])
     
     // postImage for api submit
@@ -98,7 +76,7 @@ function UserPicModal(props) {
 				console.log(response);
                 console.log(response.data);
                 // calling getuserImage function everytime user saves image.
-                getuserImage();
+                // getuserImage();
 			})
 			.catch((error) => {
 				console.log(error);

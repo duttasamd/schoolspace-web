@@ -10,6 +10,7 @@ import { useDropzone } from 'react-dropzone';
 import FileUploadWithProgress from '../FileUploadWithProgress';
 import {useForm} from 'react-hook-form';
 import authAxios from '../../utils/authAxios';
+import SunEditor from 'suneditor-react';
 
 const baseStyle = {
     flex: 1,
@@ -44,6 +45,7 @@ const baseStyle = {
 export default function CourseContentAdd(props) {
 
     const [files, setFiles] = useState([]);
+    const [toolbarToggle, setToolbarToggle] = useState(true);
 
     const onDrop = useCallback(acceptedFiles => {
         setFiles(current => [...current, ...acceptedFiles]);
@@ -126,9 +128,26 @@ export default function CourseContentAdd(props) {
                         </div>
                         <form method="POST" onSubmit={handleSubmit(onSubmit)}>
                             <div className="modal-body">
-                                <input className="form-control" placeholder="Title" id="txtTitle" name="title" ref={register}/>
-                                <textarea rows="10" placeholder="Description" className="w-100 h-100 form-control my-3" name="description" ref={register}></textarea>
-                                <div id="filedrop">
+                                <input className="form-control mb-3" placeholder="Title" id="txtTitle" name="title" ref={register}/>
+                                <SunEditor
+                                    setDefaultStyle="font-family: arial; font-size: 20px;"
+                                    height="250px"
+                                    setOptions={{
+                                        mode: "inline",
+                                        showPathLabel: false,
+                                        resizingBar: true,
+                                        buttonList: [[
+                                                    'font', 'fontSize', 'formatBlock', 'align', 
+                                                    'paragraphStyle', 'blockquote',
+                                                    'bold', 'underline', 'italic', 'strike', 'subscript', 'superscript',  
+                                                    'fontColor', 'hiliteColor', 'list', 'horizontalRule', 'lineHeight', 'table', 
+                                                    'undo','redo',
+                                        ]],
+                                        
+                                    }}
+                                    showToolbar={toolbarToggle}
+                                />
+                                <div id="filedrop" className="mt-3">
                                     <div {...getRootProps({style})}>
                                         <input {...getInputProps()}/>
                                         <p>Drop files here</p>
