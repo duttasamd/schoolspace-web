@@ -19,10 +19,10 @@ export default function CourseContent(props) {
     }
 
     return (
-        <div>
+        <div className="mb-5">
             <div className="d-flex mt-5">
                 <div className="mr-auto"><strong>Course Contents</strong></div>
-                <CourseContentAdd courseSectionId={props.courseSectionId} onClose={getCourseContent} className="ml-auto"/>
+                <CourseContentAdd courseSectionId={props.courseSectionId} onAdd={getCourseContent} className="ml-auto"/>
             </div>
             {courseContentList.map(
                 (courseContentId) => <CourseContentItem id={courseContentId} key={courseContentId}/>)}

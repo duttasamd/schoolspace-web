@@ -39,7 +39,7 @@ export default function Login(props) {
 						type='text'
 						name='emailOrUsername'
 						id='emailOrUsername'
-						placeholder='Email/Username'
+						placeholder='username / email'
 						className='form-control mb-3'
 						value={emailOrUsername}
 						onChange={(e) => setEmailOrUsername(e.target.value)}
@@ -48,7 +48,7 @@ export default function Login(props) {
 						type='password'
 						name='password'
 						id='password'
-						placeholder='Password'
+						placeholder='password'
 						className='form-control mb-3'
 						value={password}
 						onChange={(e) => setPassword(e.target.value)}

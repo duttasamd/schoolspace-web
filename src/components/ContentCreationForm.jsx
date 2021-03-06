@@ -4,6 +4,7 @@ import { useDropzone } from 'react-dropzone';
 import FileUploadWithProgress from './FileUploadWithProgress';
 import {useForm} from 'react-hook-form';
 import SunEditor from 'suneditor-react';
+import 'suneditor/dist/css/suneditor.min.css';
 
 const baseStyle = {
     flex: 1,
@@ -39,6 +40,7 @@ export default function CourseContentAdd(props) {
 
     const [files, setFiles] = useState([]);
     const [toolbarToggle, setToolbarToggle] = useState(true);
+    const [description, setDescription] = useState();
 
     const onDrop = useCallback(acceptedFiles => {
         setFiles(current => [...current, ...acceptedFiles]);
@@ -91,6 +93,8 @@ export default function CourseContentAdd(props) {
                 type : file.type
             }
         });
+
+        data.description = description;
         
         props.onSubmit(data);
     }
@@ -124,6 +128,7 @@ export default function CourseContentAdd(props) {
                     }}
                     showToolbar={toolbarToggle}
                     className="pt-5"
+                    onChange={setDescription}
                 />
                 <div id="filedrop" className="mt-3">
                     <div {...getRootProps({style})}>

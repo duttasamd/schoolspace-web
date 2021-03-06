@@ -4,6 +4,8 @@ import { useParams } from "react-router-dom";
 import Navbar from "../Navbar";
 import CourseContent from "./CourseContent";
 import authAxios from "../../utils/authAxios";
+import AssignmentAdd from "../assignments/AssignmentAdd";
+import AssignmentListItem from "../assignments/AssignmentListItem";
 
 export default function Course(props) {
     let { id } = useParams();
@@ -15,6 +17,18 @@ export default function Course(props) {
             setCourseSection(response.data);
         })
     }, []);
+
+    let numAssignments = 1 + Math.round(Math.random() * 6) ;
+
+    let assignments = [];
+    while(numAssignments > 0) {
+        assignments.push({
+            title : `Assignment ${7 - numAssignments}`,
+            attachments : `${Math.round(Math.random()*4)} Attachments`,
+            deadline : "31 Mar"
+        })
+        numAssignments--;
+    }
 
     return(
         <div>
@@ -66,7 +80,23 @@ export default function Course(props) {
 
                         <div id="cassign" className="collapse" aria-labelledby="headingOne">
                             <div className="card-body py-3 px-3 pb-1">
-                                
+                                <div>
+                                    <div className="d-flex">
+                                        <span className="mr-auto"><strong>Assignments</strong></span>
+                                        <AssignmentAdd className="ml-auto"/>
+                                    </div>
+                                    <div>
+                                        {
+                                            assignments.map((assignment) => 
+                                                <AssignmentListItem assignment={assignment}/>
+                                            )
+                                        }
+                                        
+                                    </div>
+                                </div>
+                                <div>
+
+                                </div>
                             </div>
                         </div>
                     </div>
