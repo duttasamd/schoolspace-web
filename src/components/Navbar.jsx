@@ -11,7 +11,6 @@ class Navbar extends Component {
 
 	componentDidMount() {
 		try	{
-			console.log("Getting User Nav");
 			UserService.get((user) => {
 				this.setState({ loading: false, user: user });
 			});

@@ -79,7 +79,6 @@ export default function StudentTable() {
 			if (fetchId === fetchIdRef.current) {
 				// const startRow = pageSize * pageIndex;
 				// const endRow = startRow + pageSize;
-				console.log("fetching users..");
 				fetch(
 					process.env.REACT_APP_SCHOOLSPACE_API_URL +
 						"/students?" +

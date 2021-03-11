@@ -18,7 +18,6 @@ export default function Login(props) {
 		try {
 			const isLoggedIn = await auth.login(emailOrUsername, password);
 			if(isLoggedIn) {
-				console.log("Successful");
 				setError("");
 				history.push("/");
 			} else {

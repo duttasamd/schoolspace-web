@@ -28,11 +28,10 @@ export default function Attendance() {
 
         authAxios.get(`/sections/${sectionId}`).then(
             (res) => {
-                console.log(res.data);
-            setSection(res.data);
-        }).catch((err) => {
-            console.log(err);
-        })
+                setSection(res.data);
+            }).catch((err) => {
+                console.log(err);
+            })
     }, [])
 
     useEffect(() => {

@@ -31,7 +31,6 @@ class AuthenticationService {
 	}
 
 	isAuthenticated() {
-		console.log("In is authenticated.");
 		const access_token = CookieService.get('access_token');
 		let expires_at = CookieService.get('expires_at');
 

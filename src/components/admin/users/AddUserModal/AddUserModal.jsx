@@ -32,18 +32,14 @@ export default function AddUserModal() {
 	const handleSubmit = (e) => {
 		e.preventDefault();
 		e.persist();
-		console.log(JSON.stringify(formData));
 		axios
-			.post("http://localhost:8000/api/v1/users/store", formData, {
+			.post(`${process.env.REACT_APP_SCHOOLSPACE_API_URL}/users/store`, formData, {
 				headers: {
-					"Access-Control-Allow-Origin": "*",
 					Authorization:
 						"Bearer " + CookieService.get("access_token"),
 				},
 			})
 			.then((response) => {
-				console.log(response);
-				console.log(response.data);
 				alert(
 					e.target.firstname.value +
 						" " +

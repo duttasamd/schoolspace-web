@@ -16,7 +16,6 @@ export default function AssignmentAdd() {
     const handleShow = () => setShow(true);
 
     const onSubmit = (data) => {
-        console.log(data);
     }
 
     return (

@@ -61,7 +61,6 @@ export default function InfoBox(props) {
 			})
 		} else {
 			console.log(props.user.role_id);
-			console.log("Not a student.");
 		}
 	}, [props.user]);
 
